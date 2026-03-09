@@ -1,0 +1,1035 @@
+<!--
+=============================================================================
+  SUN STATE DIGITAL — PREMIUM WEBSITE SCRIPTS V2
+  "Looks like it cost $20K" Edition
+  March 2026 | Duda Developer Mode | Paste-Ready
+
+  PASTE ORDER:
+  1. Global CSS → </> top toolbar → CSS tab
+  2. Global JS  → </> top toolbar → JS tab
+  3. Each section → click section → </> → replace HTML
+  4. New sections → Add → Custom HTML → drag into position
+
+  Brand: #000 / #FFF / #111 / Gold #FFD700→#C8920A→#6B4200
+  Fonts: Montserrat 900 / Inter 400–700
+=============================================================================
+-->
+
+
+<!-- =====================================================================
+     PART 1-A: GLOBAL CSS
+     Paste into: </> (top toolbar) → CSS tab
+     ===================================================================== -->
+<style>
+/* ─── VARIABLES ─────────────────────────────────────── */
+:root {
+  --black:       #000000;
+  --surface:     #0a0a0a;
+  --card:        #111111;
+  --card-hover:  #161616;
+  --border:      rgba(255,255,255,0.06);
+  --border-gold: rgba(255,215,0,0.2);
+  --white:       #FFFFFF;
+  --muted:       rgba(255,255,255,0.45);
+  --muted2:      rgba(255,255,255,0.25);
+  --gold:        #FFD700;
+  --gold-mid:    #C8920A;
+  --gold-dark:   #6B4200;
+  --gold-grad:   linear-gradient(135deg, #FFD700 0%, #C8920A 60%, #6B4200 100%);
+  --gold-glow:   0 0 60px rgba(255,215,0,0.15), 0 0 120px rgba(255,215,0,0.05);
+  --r:           16px;
+  --r-lg:        28px;
+  --r-xl:        40px;
+  --ease:        cubic-bezier(0.4,0,0.2,1);
+  --spring:      cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* ─── RESET ──────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────── */
+.ssd-eye {
+  font:700 10px/1 'Inter',sans-serif;
+  letter-spacing:3.5px;
+  text-transform:uppercase;
+  color:var(--gold);
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+}
+.ssd-eye::before {
+  content:'';
+  display:block;
+  width:28px;height:1px;
+  background:var(--gold-grad);
+  flex-shrink:0;
+}
+.ssd-h1 {
+  font:900 clamp(48px,5.5vw,88px)/1.0 'Montserrat',sans-serif;
+  letter-spacing:-2.5px;
+  color:var(--white);
+}
+.ssd-h2 {
+  font:900 clamp(36px,4vw,64px)/1.05 'Montserrat',sans-serif;
+  letter-spacing:-1.5px;
+  color:var(--white);
+}
+.ssd-h3 {
+  font:900 clamp(22px,2vw,32px)/1.2 'Montserrat',sans-serif;
+  color:var(--white);
+}
+.ssd-body {
+  font:400 16px/1.8 'Inter',sans-serif;
+  color:var(--muted);
+}
+.ssd-gold {
+  background:var(--gold-grad);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.ssd-gold-anim {
+  background:linear-gradient(90deg,#FFD700,#C8920A,#FFD700,#C8920A);
+  background-size:300% 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:goldShimmer 4s ease infinite;
+}
+@keyframes goldShimmer {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ─── BUTTONS ────────────────────────────────────────── */
+.ssd-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font:700 12px/1 'Inter',sans-serif;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:18px 40px;
+  border-radius:100px;
+  cursor:pointer;
+  transition:all 0.3s var(--ease);
+  position:relative;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.ssd-btn::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,0.08);
+  opacity:0;
+  transition:opacity 0.3s;
+  border-radius:inherit;
+}
+.ssd-btn:hover::after{opacity:1}
+
+.ssd-btn-primary {
+  background:var(--white);
+  color:var(--black);
+  border:2px solid var(--white);
+  box-shadow:0 0 0 0 rgba(255,255,255,0.3);
+}
+.ssd-btn-primary:hover {
+  background:var(--gold);
+  border-color:var(--gold);
+  transform:translateY(-3px);
+  box-shadow:0 16px 48px rgba(255,215,0,0.3),0 0 0 8px rgba(255,215,0,0.08);
+}
+.ssd-btn-ghost {
+  background:transparent;
+  color:var(--white);
+  border:1.5px solid rgba(255,255,255,0.18);
+}
+.ssd-btn-ghost:hover {
+  border-color:rgba(255,215,0,0.5);
+  color:var(--gold);
+  transform:translateY(-3px);
+}
+.ssd-btn-gold {
+  background:var(--gold-grad);
+  color:var(--black);
+  font-weight:800;
+  border:none;
+  box-shadow:0 8px 32px rgba(255,215,0,0.2);
+}
+.ssd-btn-gold:hover {
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:0 20px 60px rgba(255,215,0,0.35);
+}
+/* Pulsing ring on primary CTA */
+.ssd-btn-pulse {
+  animation:pulseRing 2.5s ease infinite;
+}
+@keyframes pulseRing {
+  0%  {box-shadow:0 0 0 0 rgba(255,215,0,0.5),0 8px 32px rgba(255,215,0,0.2)}
+  70% {box-shadow:0 0 0 18px rgba(255,215,0,0),0 8px 32px rgba(255,215,0,0.2)}
+  100%{box-shadow:0 0 0 0 rgba(255,215,0,0),0 8px 32px rgba(255,215,0,0.2)}
+}
+
+/* ─── LAYOUT ─────────────────────────────────────────── */
+.ssd-sec   {background:var(--black);  padding:130px 6%;position:relative;overflow:hidden}
+.ssd-sec-s {background:var(--surface);padding:130px 6%;position:relative;overflow:hidden}
+.ssd-wrap  {max-width:1320px;margin:0 auto;position:relative;z-index:1}
+.ssd-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.ssd-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.ssd-divider{width:48px;height:3px;background:var(--gold-grad);border-radius:99px;margin:24px 0 40px}
+
+/* ─── CARDS ──────────────────────────────────────────── */
+.ssd-card {
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:40px;
+  transition:all 0.4s var(--ease);
+  position:relative;
+  overflow:hidden;
+}
+.ssd-card::before {
+  content:'';
+  position:absolute;
+  inset:-1px;
+  border-radius:inherit;
+  padding:1px;
+  background:var(--gold-grad);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:destination-out;
+  mask-composite:exclude;
+  opacity:0;
+  transition:opacity 0.4s;
+}
+.ssd-card:hover {
+  background:var(--card-hover);
+  transform:translateY(-6px);
+  box-shadow:0 32px 80px rgba(0,0,0,0.5), var(--gold-glow);
+}
+.ssd-card:hover::before{opacity:1}
+
+/* Glass card */
+.ssd-glass {
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--r-lg);
+  position:relative;
+  overflow:hidden;
+}
+.ssd-glass::before {
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,215,0,0.4),transparent);
+}
+
+/* ─── BACKGROUNDS ────────────────────────────────────── */
+.ssd-grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.022) 1px,transparent 1px);
+  background-size:80px 80px;
+}
+.ssd-mesh {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%,rgba(255,215,0,0.04) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 60%,rgba(200,146,10,0.03) 0%,transparent 60%),
+    var(--black);
+}
+.ssd-glow-orb {
+  position:absolute;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,215,0,0.08) 0%,transparent 70%);
+  pointer-events:none;
+  animation:floatOrb 8s ease-in-out infinite;
+}
+@keyframes floatOrb {
+  0%,100%{transform:translateY(0) scale(1)}
+  50%{transform:translateY(-30px) scale(1.05)}
+}
+
+/* ─── MARQUEE ────────────────────────────────────────── */
+.ssd-marquee-wrap {
+  overflow:hidden;
+  mask:linear-gradient(90deg,transparent,#fff 10%,#fff 90%,transparent);
+  -webkit-mask:linear-gradient(90deg,transparent,#fff 10%,#fff 90%,transparent);
+}
+.ssd-marquee {
+  display:flex;
+  gap:0;
+  width:max-content;
+  animation:marqueeScroll 30s linear infinite;
+}
+.ssd-marquee:hover{animation-play-state:paused}
+@keyframes marqueeScroll {
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+/* ─── TAGS ───────────────────────────────────────────── */
+.ssd-tag {
+  display:inline-flex;align-items:center;gap:6px;
+  font:700 10px/1 'Inter',sans-serif;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:6px 14px;border-radius:100px;
+  background:rgba(255,215,0,0.08);
+  color:var(--gold);
+  border:1px solid rgba(255,215,0,0.18);
+}
+
+/* ─── IMAGE EFFECTS ──────────────────────────────────── */
+.ssd-img-wrap {
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  position:relative;
+}
+.ssd-img-wrap img {
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform 0.8s var(--ease);
+  filter:saturate(0.8) brightness(0.9);
+}
+.ssd-img-wrap:hover img {
+  transform:scale(1.05);
+  filter:saturate(1) brightness(1);
+}
+.ssd-img-overlay {
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);
+  pointer-events:none;
+}
+
+/* ─── SCROLL ANIMATIONS ──────────────────────────────── */
+.fade-up {
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 0.8s var(--ease),transform 0.8s var(--ease);
+}
+.fade-up.vis{opacity:1;transform:translateY(0)}
+.fade-up.d1{transition-delay:0.1s}
+.fade-up.d2{transition-delay:0.2s}
+.fade-up.d3{transition-delay:0.3s}
+.fade-up.d4{transition-delay:0.4s}
+.fade-up.d5{transition-delay:0.5s}
+
+.fade-left {
+  opacity:0;transform:translateX(-40px);
+  transition:opacity 0.8s var(--ease),transform 0.8s var(--ease);
+}
+.fade-left.vis{opacity:1;transform:translateX(0)}
+
+.fade-right {
+  opacity:0;transform:translateX(40px);
+  transition:opacity 0.8s var(--ease),transform 0.8s var(--ease);
+}
+.fade-right.vis{opacity:1;transform:translateX(0)}
+
+.scale-in {
+  opacity:0;transform:scale(0.9);
+  transition:opacity 0.7s var(--ease),transform 0.7s var(--spring);
+}
+.scale-in.vis{opacity:1;transform:scale(1)}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media(max-width:960px){
+  .ssd-sec,.ssd-sec-s{padding:80px 5%}
+  .ssd-grid-2,.ssd-grid-3{grid-template-columns:1fr!important}
+  .ssd-bento{grid-template-columns:1fr!important}
+  .ssd-marquee-row{flex-wrap:wrap!important;gap:16px!important}
+  .ssd-h1{font-size:clamp(38px,8vw,60px)!important}
+  .ssd-h2{font-size:clamp(30px,7vw,48px)!important}
+}
+</style>
+
+
+<!-- =====================================================================
+     PART 1-B: GLOBAL JS
+     Paste into: </> (top toolbar) → JS tab
+     ===================================================================== -->
+<script>
+(function(){
+  /* Scroll animations */
+  function init(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}
+      });
+    },{threshold:0.1});
+    document.querySelectorAll('.fade-up,.fade-left,.fade-right,.scale-in').forEach(function(el){io.observe(el)});
+  }
+
+  /* Animated counters */
+  function counter(el){
+    var target=+el.dataset.target, suffix=el.dataset.suffix||'', prefix=el.dataset.prefix||'',
+        dur=2200, start=null;
+    function step(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1), val=Math.round(p*target);
+      el.textContent=prefix+val.toLocaleString()+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function initCounters(){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){counter(e.target);io.unobserve(e.target)}});
+    },{threshold:0.5});
+    document.querySelectorAll('[data-target]').forEach(function(el){io.observe(el)});
+  }
+
+  /* 3D card tilt */
+  function initTilt(){
+    document.querySelectorAll('.ssd-tilt').forEach(function(card){
+      card.addEventListener('mousemove',function(e){
+        var r=card.getBoundingClientRect(),
+            x=(e.clientX-r.left)/r.width-0.5,
+            y=(e.clientY-r.top)/r.height-0.5;
+        card.style.transform='perspective(800px) rotateX('+(-y*8)+'deg) rotateY('+(x*8)+'deg) translateZ(10px)';
+      });
+      card.addEventListener('mouseleave',function(){
+        card.style.transform='perspective(800px) rotateX(0) rotateY(0) translateZ(0)';
+      });
+    });
+  }
+
+  /* Cursor glow */
+  function initCursor(){
+    var glow=document.createElement('div');
+    glow.style.cssText='position:fixed;width:400px;height:400px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(255,215,0,0.04) 0%,transparent 70%);transition:transform 0.15s ease;z-index:0;top:-200px;left:-200px;';
+    document.body.appendChild(glow);
+    document.addEventListener('mousemove',function(e){
+      glow.style.transform='translate('+(e.clientX-200)+'px,'+(e.clientY-200)+'px)';
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){init();initCounters();initTilt();initCursor()});
+  } else {
+    init();initCounters();initTilt();initCursor();
+  }
+})();
+</script>
+
+
+<!-- =====================================================================
+     PART 2: HERO SECTION
+     Paste into: Homepage → Hero section → </>
+     ===================================================================== -->
+<section class="ssd-sec ssd-grid-bg ssd-mesh" style="min-height:100vh;display:flex;align-items:center;padding-top:0;padding-bottom:0;">
+
+  <!-- Floating orbs -->
+  <div class="ssd-glow-orb" style="width:700px;height:700px;top:-150px;right:-150px;opacity:0.7;animation-delay:-2s;"></div>
+  <div class="ssd-glow-orb" style="width:500px;height:500px;bottom:-100px;left:-100px;opacity:0.5;animation-delay:-5s;"></div>
+
+  <div class="ssd-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:160px 0 120px;">
+
+    <!-- LEFT -->
+    <div>
+      <div class="fade-up" style="margin-bottom:32px;">
+        <span class="ssd-tag" style="gap:8px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;animation:pulseRing 2s ease infinite;"></span>
+          Brisbane's Most Trusted Digital Growth Agency
+        </span>
+      </div>
+
+      <h1 class="ssd-h1 fade-up d1" style="margin-bottom:20px;">
+        Websites Built to Rank.<br>
+        Designed to Convert.<br>
+        <span class="ssd-gold-anim">Delivered in 24 Hours.</span>
+      </h1>
+
+      <div class="ssd-divider fade-up d2"></div>
+
+      <p class="ssd-body fade-up d2" style="font-size:18px;max-width:500px;margin-bottom:44px;line-height:1.8;">
+        Your online presence is your first impression, your best salesperson, and your most valuable business asset — all in one. We build it to world-class standard. Fast.
+      </p>
+
+      <div class="fade-up d3" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:56px;">
+        <a href="/get-started" class="ssd-btn ssd-btn-gold ssd-btn-pulse" style="font-size:13px;padding:20px 48px;">Start Your Project →</a>
+        <a href="#services" class="ssd-btn ssd-btn-ghost">See What We Do</a>
+      </div>
+
+      <!-- Stats row -->
+      <div class="fade-up d4" style="display:flex;gap:0;padding-top:40px;border-top:1px solid var(--border);">
+        <div style="flex:1;padding-right:32px;">
+          <div style="font:900 36px/1 'Montserrat',sans-serif;color:var(--gold);" data-target="500" data-suffix="+">500+</div>
+          <div style="font:600 11px/1 'Inter',sans-serif;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;">Websites Delivered</div>
+        </div>
+        <div style="width:1px;background:var(--border);margin:0 32px 0 0;"></div>
+        <div style="flex:1;padding-right:32px;">
+          <div style="font:900 36px/1 'Montserrat',sans-serif;color:var(--gold);">24hr</div>
+          <div style="font:600 11px/1 'Inter',sans-serif;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;">Go-Live Guarantee</div>
+        </div>
+        <div style="width:1px;background:var(--border);margin:0 32px 0 0;"></div>
+        <div style="flex:1;">
+          <div style="font:900 36px/1 'Montserrat',sans-serif;color:var(--gold);" data-target="5" data-suffix="★">5★</div>
+          <div style="font:600 11px/1 'Inter',sans-serif;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;">Client Rating</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — Visual stack -->
+    <div class="fade-right d2" style="position:relative;padding:20px 0 40px;">
+
+      <!-- Main image — professional team -->
+      <div class="ssd-img-wrap" style="height:480px;border-radius:var(--r-xl);box-shadow:0 40px 100px rgba(0,0,0,0.6),var(--gold-glow);">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80" alt="Professional team at Sun State Digital" loading="lazy">
+        <div class="ssd-img-overlay"></div>
+        <!-- Gold border accent -->
+        <div style="position:absolute;inset:0;border-radius:inherit;border:1px solid rgba(255,215,0,0.15);pointer-events:none;"></div>
+      </div>
+
+      <!-- Floating card — 24hr badge -->
+      <div class="ssd-glass ssd-tilt" style="position:absolute;bottom:-20px;right:-30px;padding:24px 28px;border-radius:20px;box-shadow:0 24px 64px rgba(0,0,0,0.6);">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="width:48px;height:48px;border-radius:14px;background:var(--gold-grad);display:flex;align-items:center;justify-content:center;font:900 20px/1 'Montserrat',sans-serif;color:var(--black);flex-shrink:0;">24</div>
+          <div>
+            <div style="font:700 13px/1 'Inter',sans-serif;color:var(--white);">Hour Delivery</div>
+            <div style="font:400 11px/1 'Inter',sans-serif;color:var(--muted);margin-top:4px;">Guaranteed go-live</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating card — rating -->
+      <div class="ssd-glass ssd-tilt" style="position:absolute;top:-16px;left:-30px;padding:18px 22px;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+        <div style="font:700 12px/1 'Inter',sans-serif;color:var(--gold);margin-bottom:8px;letter-spacing:1px;text-transform:uppercase;">Latest Review</div>
+        <div style="font-size:16px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;">★★★★★</div>
+        <div style="font:400 12px/1.4 'Inter',sans-serif;color:var(--muted);max-width:160px;">"Live in 18 hours. Quality blew me away."</div>
+      </div>
+
+      <!-- Floating — live indicator -->
+      <div class="ssd-glass" style="position:absolute;top:30px;right:-20px;padding:12px 18px;border-radius:100px;display:flex;align-items:center;gap:8px;">
+        <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulseRing 2s ease infinite;"></div>
+        <span style="font:600 11px/1 'Inter',sans-serif;color:var(--white);letter-spacing:1px;text-transform:uppercase;">3 sites live today</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     PART 3: TRUST MARQUEE / LOGO BAR
+     Add new Custom HTML section immediately below hero
+     ===================================================================== -->
+<div style="background:#050505;padding:32px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="ssd-marquee-wrap">
+    <div class="ssd-marquee">
+      <!-- Trust signals × 2 for seamless loop -->
+      <div style="display:flex;align-items:center;gap:64px;padding:0 32px;">
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">⭐ 500+ Websites Delivered</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">⚡ Live in 24 Hours</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">🔒 No Lock-in Contracts</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">📍 Brisbane Based</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">🏆 5-Star Rated Agency</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">🤖 AI-Powered Automation</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">📈 SEO-Ready From Day One</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+      </div>
+      <!-- Duplicate for seamless loop -->
+      <div style="display:flex;align-items:center;gap:64px;padding:0 32px;">
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">⭐ 500+ Websites Delivered</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">⚡ Live in 24 Hours</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">🔒 No Lock-in Contracts</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">📍 Brisbane Based</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">🏆 5-Star Rated Agency</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">🤖 AI-Powered Automation</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">📈 SEO-Ready From Day One</span>
+        <span style="font:700 12px/1 'Inter',sans-serif;color:rgba(255,215,0,0.4);letter-spacing:2px;text-transform:uppercase;white-space:nowrap;">✦</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- =====================================================================
+     PART 4: SERVICES BENTO GRID
+     Paste into: Homepage → Services section → </>
+     ===================================================================== -->
+<section class="ssd-sec-s ssd-grid-bg" id="services">
+  <div class="ssd-wrap">
+
+    <div class="fade-up" style="margin-bottom:12px;"><span class="ssd-eye">What We Build For You</span></div>
+    <h2 class="ssd-h2 fade-up d1" style="max-width:680px;margin-bottom:14px;">
+      Everything Your Business Needs<br>to <span class="ssd-gold">Win Online.</span>
+    </h2>
+    <p class="ssd-body fade-up d2" style="max-width:520px;margin-bottom:72px;">Not just a website. A full digital growth engine — designed, built, and managed so you can focus on running your business.</p>
+
+    <!-- BENTO -->
+    <div class="ssd-bento fade-up d2" style="display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:auto auto;gap:16px;">
+
+      <!-- WEBSITES — tall -->
+      <div class="ssd-card ssd-tilt" style="grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between;min-height:520px;">
+        <div>
+          <div class="ssd-img-wrap" style="height:220px;margin:-40px -40px 32px;border-radius:var(--r-lg) var(--r-lg) 0 0;">
+            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=700&q=80" alt="Website design" loading="lazy">
+            <div class="ssd-img-overlay"></div>
+          </div>
+          <span class="ssd-tag" style="margin-bottom:18px;">From $199/mo · Live in 24hrs</span>
+          <h3 class="ssd-h3" style="margin-bottom:14px;">Websites That Work as Hard as You Do</h3>
+          <p class="ssd-body" style="font-size:15px;">Precision-built, mobile-first, SEO-ready from day one. Not a template — a custom business asset engineered to convert visitors into customers, 24/7.</p>
+        </div>
+        <a href="/website" style="display:inline-flex;align-items:center;gap:8px;font:700 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-top:32px;padding-top:24px;border-top:1px solid var(--border);transition:gap 0.3s;" onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">
+          Explore Websites <span>→</span>
+        </a>
+      </div>
+
+      <!-- SEO -->
+      <div class="ssd-card ssd-tilt fade-up d1">
+        <div style="font-size:32px;margin-bottom:20px;">🔍</div>
+        <h3 class="ssd-h3" style="font-size:20px;margin-bottom:10px;">Rank Higher. Get Found First.</h3>
+        <p class="ssd-body" style="font-size:14px;">Local, technical, and content SEO — built in from day one so Google sends customers to you, not your competitors.</p>
+        <a href="/seo" style="display:block;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-top:22px;">SEO Services →</a>
+      </div>
+
+      <!-- GOOGLE ADS — gold card -->
+      <div class="ssd-tilt fade-up d2" style="background:var(--gold-grad);border-radius:var(--r-lg);padding:40px;position:relative;overflow:hidden;transition:transform 0.4s var(--ease),box-shadow 0.4s;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 32px 80px rgba(255,215,0,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.1);"></div>
+        <div style="font-size:32px;margin-bottom:20px;position:relative;">📣</div>
+        <h3 style="font:900 20px/1.2 'Montserrat',sans-serif;color:var(--black);margin-bottom:10px;position:relative;">Own the Top of Google.</h3>
+        <p style="font:400 14px/1.6 'Inter',sans-serif;color:rgba(0,0,0,0.6);position:relative;">Data-driven campaigns that put you in front of buyers the moment they search.</p>
+        <a href="/google-ads" style="display:block;font:800 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--black);margin-top:22px;opacity:0.65;position:relative;">Google Ads →</a>
+      </div>
+
+      <!-- SOCIAL -->
+      <div class="ssd-card ssd-tilt fade-up d1">
+        <div style="font-size:32px;margin-bottom:20px;">📱</div>
+        <h3 class="ssd-h3" style="font-size:20px;margin-bottom:10px;">A Brand That Commands Attention.</h3>
+        <p class="ssd-body" style="font-size:14px;">Premium content that builds trust and drives enquiries — across Facebook, Instagram, and beyond.</p>
+        <a href="/social-media" style="display:block;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-top:22px;">Social Media →</a>
+      </div>
+
+      <!-- AUTOMATION — wide -->
+      <div class="ssd-card ssd-tilt fade-up d2" style="grid-column:span 2;display:flex;gap:40px;align-items:center;">
+        <div style="flex:1;">
+          <div style="font-size:32px;margin-bottom:20px;">⚙️</div>
+          <h3 class="ssd-h3" style="font-size:20px;margin-bottom:10px;">Your Business, Running on Autopilot.</h3>
+          <p class="ssd-body" style="font-size:14px;max-width:360px;">Smart CRM, instant lead follow-up, and AI-powered email sequences — zero leads left behind, zero manual work.</p>
+          <a href="/automation" style="display:block;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-top:22px;">Automation →</a>
+        </div>
+        <div style="font:900 88px/1 'Montserrat',sans-serif;color:rgba(255,215,0,0.05);user-select:none;flex-shrink:0;letter-spacing:-4px;">AUTO</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     PART 5: TRUTH / EDITORIAL STAT
+     Add new Custom HTML section after services
+     ===================================================================== -->
+<section class="ssd-sec" style="overflow:hidden;">
+  <div class="ssd-glow-orb" style="width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.4;"></div>
+
+  <div class="ssd-wrap ssd-grid-2" style="gap:100px;">
+    <div>
+      <div class="fade-up" style="margin-bottom:16px;"><span class="ssd-eye">01 — The Reality</span></div>
+      <h2 class="ssd-h2 fade-up d1" style="margin-bottom:0;">
+        97% of customers<br>Google a business<br><span class="ssd-gold">before they call.</span>
+      </h2>
+      <div class="ssd-divider fade-up d2"></div>
+      <p class="ssd-body fade-up d2" style="margin-bottom:20px;font-size:17px;">If your business doesn't show up — or shows up looking outdated — that customer just called your competitor. Not because you're not great at what you do. Simply because they couldn't find you.</p>
+      <p class="ssd-body fade-up d3" style="font-size:17px;">Every single day without a world-class online presence is revenue you'll never get back.</p>
+      <div class="fade-up d4" style="margin-top:40px;">
+        <a href="/get-started" class="ssd-btn ssd-btn-primary">Fix This Today →</a>
+      </div>
+    </div>
+    <div class="fade-right d2" style="display:flex;justify-content:center;">
+      <div class="ssd-glass ssd-tilt" style="padding:64px 56px;text-align:center;max-width:380px;border-left:3px solid var(--gold);">
+        <div style="font:900 clamp(80px,12vw,130px)/1 'Montserrat',sans-serif;background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;" data-target="97" data-suffix="%">97%</div>
+        <p style="font:400 15px/1.7 'Inter',sans-serif;color:var(--muted);margin-top:20px;">of people search online before contacting a local business.</p>
+        <div style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border);">
+          <span class="ssd-tag">Source: Google Consumer Insights</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     PART 6: HOW IT WORKS (Process)
+     ===================================================================== -->
+<section class="ssd-sec-s ssd-grid-bg">
+  <div class="ssd-wrap">
+    <div class="fade-up" style="margin-bottom:12px;"><span class="ssd-eye">02 — The Process</span></div>
+    <h2 class="ssd-h2 fade-up d1" style="margin-bottom:80px;">From Zero to Online<br>in <span class="ssd-gold">24 Hours.</span></h2>
+
+    <div class="ssd-grid-3" style="gap:48px;">
+      <div class="fade-up">
+        <div style="font:900 110px/1 'Montserrat',sans-serif;color:rgba(255,215,0,0.06);margin-bottom:-50px;user-select:none;">01</div>
+        <div style="position:relative;z-index:1;">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--gold-grad);display:flex;align-items:center;justify-content:center;font:900 17px/1 'Montserrat',sans-serif;color:var(--black);margin-bottom:20px;">1</div>
+          <h3 class="ssd-h3" style="font-size:22px;margin-bottom:12px;">Tell Us About Your Business</h3>
+          <p class="ssd-body" style="font-size:15px;">Fill out our 10-minute onboarding form. Logo, colours, services, who you serve. That's all we need to get started.</p>
+        </div>
+      </div>
+      <div class="fade-up d1">
+        <div style="font:900 110px/1 'Montserrat',sans-serif;color:rgba(255,215,0,0.06);margin-bottom:-50px;user-select:none;">02</div>
+        <div style="position:relative;z-index:1;">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--gold-grad);display:flex;align-items:center;justify-content:center;font:900 17px/1 'Montserrat',sans-serif;color:var(--black);margin-bottom:20px;">2</div>
+          <h3 class="ssd-h3" style="font-size:22px;margin-bottom:12px;">We Build Overnight</h3>
+          <p class="ssd-body" style="font-size:15px;">Custom design, fully mobile-optimised, SEO-structured from the ground up. Done while you sleep — ready by morning.</p>
+        </div>
+      </div>
+      <div class="fade-up d2">
+        <div style="font:900 110px/1 'Montserrat',sans-serif;color:rgba(255,215,0,0.06);margin-bottom:-50px;user-select:none;">03</div>
+        <div style="position:relative;z-index:1;">
+          <div style="width:44px;height:44px;border-radius:50%;background:var(--gold-grad);display:flex;align-items:center;justify-content:center;font:900 17px/1 'Montserrat',sans-serif;color:var(--black);margin-bottom:20px;">3</div>
+          <h3 class="ssd-h3" style="font-size:22px;margin-bottom:12px;">Review, Refine &amp; Go Live</h3>
+          <p class="ssd-body" style="font-size:15px;">You review, request tweaks, and we hit publish. Your business is live, ranked, and ready for customers before the day is out.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     PART 7: TESTIMONIALS — PREMIUM GLASSMORPHISM
+     ===================================================================== -->
+<section class="ssd-sec ssd-mesh">
+  <div class="ssd-glow-orb" style="width:600px;height:600px;top:-100px;right:-100px;opacity:0.5;"></div>
+  <div class="ssd-wrap">
+    <div class="fade-up" style="margin-bottom:12px;"><span class="ssd-eye">03 — Trusted By</span></div>
+    <h2 class="ssd-h2 fade-up d1" style="margin-bottom:64px;">
+      500+ Businesses Across<br><span class="ssd-gold">South East Queensland.</span>
+    </h2>
+
+    <div class="ssd-grid-3" style="gap:24px;">
+
+      <!-- Review 1 -->
+      <div class="ssd-glass ssd-tilt fade-up" style="padding:40px;border-radius:var(--r-lg);">
+        <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:24px;">
+          <div style="font-size:20px;letter-spacing:3px;color:var(--gold);">★★★★★</div>
+          <div style="font:700 10px/1 'Inter',sans-serif;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:5px 10px;border-radius:100px;">Google Review</div>
+        </div>
+        <p style="font:400 16px/1.8 'Inter',sans-serif;color:rgba(255,255,255,0.85);font-style:italic;margin-bottom:28px;">"I had a website live within 18 hours of signing up. The quality was better than agencies I'd paid $8,000 to before. Couldn't believe it."</p>
+        <div style="padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px;">
+          <div class="ssd-img-wrap" style="width:44px;height:44px;border-radius:50%;flex-shrink:0;">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Jake M." loading="lazy">
+          </div>
+          <div>
+            <div style="font:700 14px/1 'Inter',sans-serif;color:var(--white);">Jake M.</div>
+            <div style="font:400 12px/1 'Inter',sans-serif;color:var(--muted);margin-top:4px;">Licensed Electrician, Brisbane</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 — featured -->
+      <div class="ssd-glass ssd-tilt fade-up d1" style="padding:40px;border-radius:var(--r-lg);border-color:rgba(255,215,0,0.25);box-shadow:0 0 60px rgba(255,215,0,0.08);">
+        <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:24px;">
+          <div style="font-size:20px;letter-spacing:3px;color:var(--gold);">★★★★★</div>
+          <div class="ssd-tag">Featured</div>
+        </div>
+        <p style="font:400 16px/1.8 'Inter',sans-serif;color:rgba(255,255,255,0.85);font-style:italic;margin-bottom:28px;">"Finally an agency that actually delivers what they promise. My enquiries doubled in the first 6 weeks. No fluff, no excuses — just results."</p>
+        <div style="padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px;">
+          <div class="ssd-img-wrap" style="width:44px;height:44px;border-radius:50%;flex-shrink:0;">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Sarah T." loading="lazy">
+          </div>
+          <div>
+            <div style="font:700 14px/1 'Inter',sans-serif;color:var(--white);">Sarah T.</div>
+            <div style="font:400 12px/1 'Inter',sans-serif;color:var(--muted);margin-top:4px;">Physiotherapist, Gold Coast</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="ssd-glass ssd-tilt fade-up d2" style="padding:40px;border-radius:var(--r-lg);">
+        <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:24px;">
+          <div style="font-size:20px;letter-spacing:3px;color:var(--gold);">★★★★★</div>
+          <div style="font:700 10px/1 'Inter',sans-serif;color:var(--muted);letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);padding:5px 10px;border-radius:100px;">Google Review</div>
+        </div>
+        <p style="font:400 16px/1.8 'Inter',sans-serif;color:rgba(255,255,255,0.85);font-style:italic;margin-bottom:28px;">"Best investment I've made for my business. Looks incredible, loads fast, and I'm getting calls from Google every single week now."</p>
+        <div style="padding-top:24px;border-top:1px solid var(--border);display:flex;align-items:center;gap:14px;">
+          <div class="ssd-img-wrap" style="width:44px;height:44px;border-radius:50%;flex-shrink:0;">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Dave R." loading="lazy">
+          </div>
+          <div>
+            <div style="font:700 14px/1 'Inter',sans-serif;color:var(--white);">Dave R.</div>
+            <div style="font:400 12px/1 'Inter',sans-serif;color:var(--muted);margin-top:4px;">Landscaper, Sunshine Coast</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     PART 8: AI SECTION — THE EDGE
+     Add new Custom HTML section after testimonials
+     ===================================================================== -->
+<section class="ssd-sec-s" style="overflow:hidden;">
+  <!-- Animated circuit pattern bg -->
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(255,215,0,0.06) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;"></div>
+  <div class="ssd-glow-orb" style="width:700px;height:700px;bottom:-200px;right:-100px;opacity:0.4;"></div>
+
+  <div class="ssd-wrap">
+    <div class="ssd-grid-2" style="gap:100px;align-items:center;">
+
+      <!-- LEFT -->
+      <div>
+        <div class="fade-up" style="margin-bottom:12px;"><span class="ssd-eye">04 — The Edge</span></div>
+        <h2 class="ssd-h2 fade-up d1" style="margin-bottom:14px;">
+          AI-Powered.<br>Built for <span class="ssd-gold">Tomorrow.</span>
+        </h2>
+        <div class="ssd-divider fade-up d2"></div>
+        <p class="ssd-body fade-up d2" style="font-size:17px;margin-bottom:40px;">Every Sun State Digital website isn't just built — it's powered by AI automation that works in the background, capturing leads, following up customers, and growing your revenue while you sleep.</p>
+
+        <div style="display:flex;flex-direction:column;gap:20px;" class="fade-up d3">
+          <div class="ssd-glass" style="padding:24px 28px;border-radius:16px;display:flex;align-items:center;gap:20px;">
+            <div style="width:48px;height:48px;border-radius:14px;background:rgba(255,215,0,0.1);border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🤖</div>
+            <div>
+              <div style="font:700 15px/1 'Inter',sans-serif;color:var(--white);margin-bottom:6px;">AI Chatbots &amp; Virtual Assistants</div>
+              <div style="font:400 13px/1.5 'Inter',sans-serif;color:var(--muted);">Answer enquiries, qualify leads, and book appointments — 24/7, without lifting a finger.</div>
+            </div>
+          </div>
+          <div class="ssd-glass" style="padding:24px 28px;border-radius:16px;display:flex;align-items:center;gap:20px;">
+            <div style="width:48px;height:48px;border-radius:14px;background:rgba(255,215,0,0.1);border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">⚡</div>
+            <div>
+              <div style="font:700 15px/1 'Inter',sans-serif;color:var(--white);margin-bottom:6px;">Automated Lead Workflows</div>
+              <div style="font:400 13px/1.5 'Inter',sans-serif;color:var(--muted);">Every lead gets followed up instantly — SMS, email, and call reminders — so no opportunity ever falls through the cracks.</div>
+            </div>
+          </div>
+          <div class="ssd-glass" style="padding:24px 28px;border-radius:16px;display:flex;align-items:center;gap:20px;">
+            <div style="width:48px;height:48px;border-radius:14px;background:rgba(255,215,0,0.1);border:1px solid var(--border-gold);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">📊</div>
+            <div>
+              <div style="font:700 15px/1 'Inter',sans-serif;color:var(--white);margin-bottom:6px;">Smart CRM &amp; Pipeline Automation</div>
+              <div style="font:400 13px/1.5 'Inter',sans-serif;color:var(--muted);">Track every lead, automate follow-ups, and close more jobs — without the spreadsheets.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-up d4" style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+          <a href="/automation" class="ssd-btn ssd-btn-gold">Explore AI Automation →</a>
+          <a href="/blog" class="ssd-btn ssd-btn-ghost" style="font-size:11px;">Read Our AI Blog</a>
+        </div>
+      </div>
+
+      <!-- RIGHT — visual -->
+      <div class="fade-right d2" style="position:relative;">
+        <div class="ssd-img-wrap" style="height:520px;border-radius:var(--r-xl);box-shadow:0 40px 100px rgba(0,0,0,0.5),var(--gold-glow);">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=700&q=80" alt="AI automation technology" loading="lazy">
+          <div class="ssd-img-overlay"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,215,0,0.05) 0%,transparent 50%);pointer-events:none;"></div>
+        </div>
+        <!-- Floating metric -->
+        <div class="ssd-glass" style="position:absolute;bottom:30px;left:-30px;padding:20px 24px;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+          <div style="font:700 11px/1 'Inter',sans-serif;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;">Avg Lead Response Time</div>
+          <div style="font:900 36px/1 'Montserrat',sans-serif;background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">90 sec</div>
+          <div style="font:400 12px/1 'Inter',sans-serif;color:var(--muted);margin-top:6px;">vs. industry avg 47 hours</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     PART 9: BLOG / ARTICLES SECTION
+     Add new Custom HTML section after AI section
+     ===================================================================== -->
+<section class="ssd-sec ssd-grid-bg">
+  <div class="ssd-wrap">
+
+    <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:64px;flex-wrap:wrap;gap:24px;">
+      <div>
+        <div class="fade-up" style="margin-bottom:12px;"><span class="ssd-eye">05 — Knowledge Hub</span></div>
+        <h2 class="ssd-h2 fade-up d1">Insights From the<br><span class="ssd-gold">Frontline of Digital.</span></h2>
+      </div>
+      <a href="/blog" class="ssd-btn ssd-btn-ghost fade-up d2" style="flex-shrink:0;">View All Articles →</a>
+    </div>
+
+    <div class="ssd-grid-3" style="gap:24px;">
+
+      <!-- Article 1 -->
+      <div class="ssd-card ssd-tilt fade-up" style="padding:0;overflow:hidden;">
+        <div class="ssd-img-wrap" style="height:200px;border-radius:0;">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" alt="Website ranking article" loading="lazy">
+          <div class="ssd-img-overlay"></div>
+        </div>
+        <div style="padding:32px;">
+          <span class="ssd-tag" style="margin-bottom:16px;">SEO</span>
+          <h3 class="ssd-h3" style="font-size:20px;margin-bottom:12px;">Why 90% of Small Business Websites Don't Rank on Google</h3>
+          <p class="ssd-body" style="font-size:14px;margin-bottom:24px;">The 5 critical SEO mistakes costing Brisbane businesses thousands in missed enquiries every month.</p>
+          <a href="/blog" style="font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;transition:gap 0.3s;" onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">Read Article <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Article 2 -->
+      <div class="ssd-card ssd-tilt fade-up d1" style="padding:0;overflow:hidden;">
+        <div class="ssd-img-wrap" style="height:200px;border-radius:0;">
+          <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&w=600&q=80" alt="AI chatbot article" loading="lazy">
+          <div class="ssd-img-overlay"></div>
+        </div>
+        <div style="padding:32px;">
+          <span class="ssd-tag" style="margin-bottom:16px;">AI &amp; Automation</span>
+          <h3 class="ssd-h3" style="font-size:20px;margin-bottom:12px;">How AI Chatbots Are Doubling Service Business Enquiries in 2025</h3>
+          <p class="ssd-body" style="font-size:14px;margin-bottom:24px;">Real data from 50 Brisbane businesses that switched to AI-powered lead capture.</p>
+          <a href="/blog" style="font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;transition:gap 0.3s;" onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">Read Article <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="ssd-card ssd-tilt fade-up d2" style="padding:0;overflow:hidden;">
+        <div class="ssd-img-wrap" style="height:200px;border-radius:0;">
+          <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=600&q=80" alt="Social media article" loading="lazy">
+          <div class="ssd-img-overlay"></div>
+        </div>
+        <div style="padding:32px;">
+          <span class="ssd-tag" style="margin-bottom:16px;">Social Media</span>
+          <h3 class="ssd-h3" style="font-size:20px;margin-bottom:12px;">The $500/Month Social Media Strategy That Beats $5K Agencies</h3>
+          <p class="ssd-body" style="font-size:14px;margin-bottom:24px;">The exact framework we use for SEQ trade businesses to generate consistent leads from Facebook and Instagram.</p>
+          <a href="/blog" style="font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;transition:gap 0.3s;" onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">Read Article <span>→</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     PART 10: FINAL CTA — THE CLOSER
+     ===================================================================== -->
+<section class="ssd-sec" style="text-align:center;overflow:hidden;">
+  <div class="ssd-glow-orb" style="width:1000px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);opacity:0.6;"></div>
+  <div class="ssd-wrap" style="max-width:900px;">
+    <span class="ssd-eye fade-up" style="justify-content:center;margin-bottom:24px;">The brands that win online started exactly here</span>
+    <h2 class="ssd-h2 fade-up d1" style="margin-bottom:24px;">
+      Your Competitors<br>Went Live <span class="ssd-gold-anim">Last Week.</span>
+    </h2>
+    <p class="ssd-body fade-up d2" style="max-width:600px;margin:0 auto 52px;font-size:18px;line-height:1.8;">Premium websites. Built to rank. Designed to convert. Delivered in 24 hours. This is what serious businesses invest in — and it starts with one conversation.</p>
+
+    <div class="fade-up d3" style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:44px;">
+      <a href="/get-started" class="ssd-btn ssd-btn-gold ssd-btn-pulse" style="font-size:14px;padding:22px 56px;">Start Your Project →</a>
+      <a href="https://api.leadconnectorhq.com/widget/bookings/joshua-reti-personal-calendar-k667zcdiw" target="_blank" class="ssd-btn ssd-btn-ghost">Book a Free Call</a>
+    </div>
+
+    <div class="fade-up d4" style="display:flex;justify-content:center;gap:36px;flex-wrap:wrap;">
+      <span style="font:400 13px/1 'Inter',sans-serif;color:var(--muted);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);">✓</span> No lock-in contracts</span>
+      <span style="font:400 13px/1 'Inter',sans-serif;color:var(--muted);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);">✓</span> Live in 24 hours</span>
+      <span style="font:400 13px/1 'Inter',sans-serif;color:var(--muted);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);">✓</span> World-class design</span>
+      <span style="font:400 13px/1 'Inter',sans-serif;color:var(--muted);display:flex;align-items:center;gap:8px;"><span style="color:var(--gold);">✓</span> Built to rank on Google</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     PART 11: FOOTER — PREMIUM WITH AI SECTION + SOCIAL ICONS
+     Paste into: Footer section → </>
+     ===================================================================== -->
+<footer style="background:#050505;padding:90px 6% 0;border-top:1px solid var(--border);position:relative;overflow:hidden;">
+  <div class="ssd-glow-orb" style="width:500px;height:500px;bottom:-200px;left:-100px;opacity:0.3;animation-duration:12s;"></div>
+
+  <div class="ssd-wrap">
+
+    <!-- TOP FOOTER GRID -->
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:60px;padding-bottom:64px;border-bottom:1px solid var(--border);">
+
+      <!-- BRAND -->
+      <div>
+        <div style="font:900 24px/1 'Montserrat',sans-serif;color:var(--white);margin-bottom:6px;letter-spacing:-0.5px;">Sun State Digital</div>
+        <div style="font:400 12px/1 'Inter',sans-serif;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;">Brisbane's Digital Growth Agency</div>
+        <p style="font:400 15px/1.75 'Inter',sans-serif;color:var(--muted);max-width:280px;margin-bottom:28px;">Your business, online in 24 hours. World-class websites built to rank, designed to convert.</p>
+
+        <!-- Social icons -->
+        <div style="display:flex;gap:10px;margin-bottom:32px;">
+          <a href="https://www.facebook.com/sunstatedigital" target="_blank" aria-label="Facebook" style="width:40px;height:40px;background:var(--card);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(255,215,0,0.4)';this.style.background='rgba(255,215,0,0.08)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--card)'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://www.instagram.com/sunstatedigital" target="_blank" aria-label="Instagram" style="width:40px;height:40px;background:var(--card);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(255,215,0,0.4)';this.style.background='rgba(255,215,0,0.08)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--card)'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#888" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="#888" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1" fill="#888"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/sunstatedigital" target="_blank" aria-label="LinkedIn" style="width:40px;height:40px;background:var(--card);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(255,215,0,0.4)';this.style.background='rgba(255,215,0,0.08)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--card)'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4" cy="4" r="2" stroke="#888" stroke-width="1.5"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@sunstatedigital" target="_blank" aria-label="TikTok" style="width:40px;height:40px;background:var(--card);border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(255,215,0,0.4)';this.style.background='rgba(255,215,0,0.08)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--card)'">
+            <svg width="16" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 12a4 4 0 104 4V4a5 5 0 005 5" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <!-- Contact info -->
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="mailto:hello@sunstatedigital.com.au" style="font:400 13px/1 'Inter',sans-serif;color:var(--muted);display:flex;align-items:center;gap:8px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted)'">
+            <span style="color:var(--gold);">✉</span> hello@sunstatedigital.com.au
+          </a>
+          <span style="font:400 13px/1 'Inter',sans-serif;color:var(--muted);display:flex;align-items:center;gap:8px;">
+            <span style="color:var(--gold);">📍</span> Brisbane, Queensland, Australia
+          </span>
+        </div>
+      </div>
+
+      <!-- SERVICES -->
+      <div>
+        <div style="font:700 10px/1 'Inter',sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted2);margin-bottom:24px;">Services</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <a href="/website" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Websites</a>
+          <a href="/seo" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">SEO</a>
+          <a href="/google-ads" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Google Ads</a>
+          <a href="/social-media" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Social Media</a>
+          <a href="/automation" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Automation</a>
+        </div>
+      </div>
+
+      <!-- COMPANY -->
+      <div>
+        <div style="font:700 10px/1 'Inter',sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted2);margin-bottom:24px;">Company</div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <a href="/about" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">About Us</a>
+          <a href="/pricing" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Pricing</a>
+          <a href="/blog" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Blog</a>
+          <a href="/contact" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Contact</a>
+          <a href="https://api.leadconnectorhq.com/widget/bookings/joshua-reti-personal-calendar-k667zcdiw" target="_blank" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Book a Call</a>
+        </div>
+      </div>
+
+      <!-- AI / CTA column -->
+      <div>
+        <div style="font:700 10px/1 'Inter',sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted2);margin-bottom:24px;">AI Solutions</div>
+        <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:28px;">
+          <a href="/automation" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">AI Chatbots</a>
+          <a href="/automation" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">AI Workflows</a>
+          <a href="/automation" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Lead Automation</a>
+          <a href="/automation" style="font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.55);transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">CRM Automation</a>
+          <a href="/blog" style="font:700 13px/1 'Inter',sans-serif;color:var(--gold);transition:opacity 0.2s;display:flex;align-items:center;gap:6px;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">AI Blog →</a>
+        </div>
+        <a href="/get-started" class="ssd-btn ssd-btn-gold" style="font-size:11px;padding:14px 24px;width:100%;justify-content:center;">Start Now →</a>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:28px 0;flex-wrap:wrap;gap:16px;">
+      <p style="font:400 13px/1 'Inter',sans-serif;color:var(--muted2);">© 2025 Sun State Digital. Built in Brisbane. Delivering Australia-wide.</p>
+      <div style="display:flex;gap:28px;flex-wrap:wrap;">
+        <a href="/privacy-policy" style="font:400 12px/1 'Inter',sans-serif;color:var(--muted2);letter-spacing:0.5px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted2)'">Privacy Policy</a>
+        <a href="/terms" style="font:400 12px/1 'Inter',sans-serif;color:var(--muted2);letter-spacing:0.5px;transition:color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted2)'">Terms of Service</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
