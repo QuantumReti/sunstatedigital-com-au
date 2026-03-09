@@ -335,9 +335,10 @@ a{text-decoration:none;color:inherit}
 
 
 /* ── PREMIUM NAV ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:all 0.3s var(--ease)}
-.nav.scrolled{background:rgba(0,0,0,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,215,0,0.08);box-shadow:0 4px 40px rgba(0,0,0,0.4)}
-.nav-inner{max-width:1400px;margin:0 auto;padding:22px 6%;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);width:calc(100% - 48px);max-width:1360px;z-index:200;background:rgba(10,10,10,0.55);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,0.09);border-radius:20px;box-shadow:inset 0 0 0 0.5px rgba(255,255,255,0.06),0 8px 32px rgba(0,0,0,0.45),0 2px 8px rgba(0,0,0,0.3);transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+.nav:hover{background:rgba(10,10,10,0.65);border-color:rgba(255,215,0,0.12);box-shadow:inset 0 0 0 0.5px rgba(255,255,255,0.08),0 12px 48px rgba(0,0,0,0.5),0 0 0 1px rgba(255,215,0,0.06)}
+
+.nav-inner{padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:32px}
 .nav-logo{display:flex;align-items:baseline;gap:3px;text-decoration:none}
 .logo-sun{font:900 26px/1 'Montserrat',sans-serif;background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:3px}
 .logo-state{font:900 26px/1 'Montserrat',sans-serif;color:var(--white);letter-spacing:3px}
@@ -394,9 +395,27 @@ a{text-decoration:none;color:inherit}
 .test-name{font:700 13px/1.2 'Inter',sans-serif;color:#fff}
 .test-biz{font:400 11px/1 'Inter',sans-serif;color:rgba(255,255,255,0.4);margin-top:3px;letter-spacing:0.3px}
 
+
+.hero-glass-wrap{position:relative;min-height:100vh;display:flex;align-items:center;background:#000;overflow:hidden;padding:0}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;will-change:transform}
+.orb-1{width:700px;height:700px;background:radial-gradient(circle,rgba(255,215,0,0.12) 0%,rgba(200,146,10,0.06) 50%,transparent 70%);top:-200px;right:-100px;animation:orbFloat1 12s ease-in-out infinite alternate}
+.orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(255,180,0,0.08) 0%,rgba(107,66,0,0.04) 60%,transparent 80%);bottom:-100px;left:-50px;animation:orbFloat2 15s ease-in-out infinite alternate}
+.orb-3{width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,0.03) 0%,transparent 70%);top:40%;left:40%;animation:orbFloat3 10s ease-in-out infinite alternate}
+@keyframes orbFloat1{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,80px) scale(1.15)}}
+@keyframes orbFloat2{from{transform:translate(0,0) scale(1)}to{transform:translate(-40px,-60px) scale(1.1)}}
+@keyframes orbFloat3{from{transform:translate(0,0)}to{transform:translate(30px,-40px)}}
+.glass-panel{position:relative;z-index:2;width:100%;max-width:1100px;margin:0 auto;padding:80px;background:rgba(255,255,255,0.03);backdrop-filter:blur(48px) saturate(160%);-webkit-backdrop-filter:blur(48px) saturate(160%);border:1px solid rgba(255,255,255,0.07);border-radius:32px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),inset 0 -1px 0 rgba(0,0,0,0.2),0 40px 120px rgba(0,0,0,0.6),0 0 0 0.5px rgba(255,255,255,0.04)}
+.glass-panel::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,0.4),rgba(255,255,255,0.3),rgba(200,146,10,0.4),transparent);border-radius:1px}
+.glass-panel::after{content:'';position:absolute;inset:0;border-radius:32px;background:radial-gradient(ellipse at 30% 0%,rgba(255,215,0,0.04) 0%,transparent 60%);pointer-events:none}
+@media(max-width:1024px){.glass-panel{padding:60px 40px;border-radius:24px;margin:0 20px}}
+@media(max-width:600px){.glass-panel{padding:40px 24px;border-radius:20px;margin:0 12px}.orb-1{width:400px;height:400px}}
+.card{background:rgba(255,255,255,0.03);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.07);border-radius:24px;padding:48px;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,0.3),transparent);opacity:0;transition:opacity 0.3s}
+.card:hover{transform:translateY(-6px);background:rgba(255,255,255,0.05);border-color:rgba(255,215,0,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.5),0 0 0 0.5px rgba(255,215,0,0.08)}
+.card:hover::before{opacity:1}
 </style>
 </head>
-<body style="padding-top:80px;background:#000;color:#fff;font-family:'Inter',sans-serif">
+<body style="padding-top:100px;background:#000;color:#fff;font-family:'Inter',sans-serif">
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="/index.html" class="nav-logo">
@@ -418,11 +437,14 @@ a{text-decoration:none;color:inherit}
     </button>
   </div>
 </nav>
-<section class="ssd-sec ssd-grid-bg ssd-mesh" style="min-height:100vh;display:flex;align-items:center;padding-top:0;padding-bottom:0;">
+<section class="hero-glass-wrap">
+  <!-- Animated orb backgrounds -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="glass-panel">
+    <div class="wrap">
 
-  <!-- Floating orbs -->
-  <div class="ssd-glow-orb" style="width:700px;height:700px;top:-150px;right:-150px;opacity:0.7;animation-delay:-2s;"></div>
-  <div class="ssd-glow-orb" style="width:500px;height:500px;bottom:-100px;left:-100px;opacity:0.5;animation-delay:-5s;"></div>
 
   <div class="ssd-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:160px 0 120px;">
 
@@ -506,6 +528,8 @@ a{text-decoration:none;color:inherit}
         <span style="font:600 11px/1 'Inter',sans-serif;color:var(--white);letter-spacing:1px;text-transform:uppercase;">3 sites live today</span>
       </div>
 
+    </div>
+  </div>
     </div>
   </div>
 </section>
@@ -1071,7 +1095,7 @@ a{text-decoration:none;color:inherit}
 
 </script>
 <script>
-window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+
 </script>
 
 <!-- TESTIMONIALS SECTION -->
@@ -1104,3 +1128,4 @@ if (track2) { const html = t2.map(buildTestimonialCard).join(''); track2.innerHT
 
 </body>
 </html>
+
