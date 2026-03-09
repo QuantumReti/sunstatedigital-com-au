@@ -3,155 +3,98 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Local SEO Brisbane | Get Found on Google | Sun State Digital</title>
-<meta name="description" content="Get your Brisbane business to the top of Google. Local SEO services from $99/month â€” Google Business Profile, on-page SEO, citations, and monthly reporting.">
+<title>Local SEO Brisbane | Rank Higher on Google | Sun State Digital</title>
+<meta name="description" content="Local SEO Brisbane from $99/month. Get found on Google when Brisbane customers search for your services. No lock-in contracts.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@400;500;600;700&display=swap');
-:root{--black:#000;--surface:#0a0a0a;--card:#111;--border:rgba(255,255,255,0.06);--white:#fff;--muted:rgba(255,255,255,0.45);--gold:#FFD700;--gold-grad:linear-gradient(135deg,#FFD700 0%,#C8920A 60%,#6B4200 100%);--r-lg:28px;--r-xl:40px;--ease:cubic-bezier(0.4,0,0.2,1)}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6}
-a{text-decoration:none;color:inherit}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06)}
-.nav-logo{font:900 20px/1 'Montserrat',sans-serif;background:linear-gradient(135deg,#FFD700,#C8920A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;gap:32px;align-items:center}
-.nav-links a{font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.6);transition:color 0.2s}
-.nav-links a:hover{color:#FFD700}
-.nav-cta{background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:12px 24px;border-radius:100px}
-.sec{padding:130px 6%;position:relative;overflow:hidden}
-.sec-dark{background:var(--black)}
-.sec-surface{background:var(--surface)}
-.wrap{max-width:1320px;margin:0 auto}
-.eye{font:700 10px/1 'Inter',sans-serif;letter-spacing:3.5px;text-transform:uppercase;color:#FFD700;display:inline-flex;align-items:center;gap:12px;margin-bottom:16px}
-.eye::before{content:'';display:block;width:28px;height:1px;background:linear-gradient(135deg,#FFD700,#C8920A)}
-h1{font:900 clamp(48px,5.5vw,88px)/1.0 'Montserrat',sans-serif;letter-spacing:-2.5px;margin-bottom:24px}
-h2{font:900 clamp(36px,4vw,64px)/1.05 'Montserrat',sans-serif;letter-spacing:-1.5px;margin-bottom:24px}
-h3{font:900 22px/1.2 'Montserrat',sans-serif;margin-bottom:12px}
-.gold{background:linear-gradient(135deg,#FFD700,#C8920A,#6B4200);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+:root{--black:#000;--surface:#0a0a0a;--card:#111;--card-hover:#161616;--border:rgba(255,255,255,0.06);--white:#fff;--muted:rgba(255,255,255,0.45);--gold:#FFD700;--gold-mid:#C8920A;--gold-dark:#6B4200;--gold-grad:linear-gradient(135deg,#FFD700 0%,#C8920A 60%,#6B4200 100%);--r:16px;--r-lg:28px;--ease:cubic-bezier(0.4,0,0.2,1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:all 0.3s var(--ease)}.nav.scrolled{background:rgba(0,0,0,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,215,0,0.08);box-shadow:0 4px 40px rgba(0,0,0,0.4)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:22px 6%;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.nav-logo{display:flex;align-items:baseline;gap:3px}.logo-sun{font:900 18px/1 'Montserrat',sans-serif;background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px}.logo-state{font:900 18px/1 'Montserrat',sans-serif;color:var(--white);letter-spacing:2px}.logo-digital{font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-left:4px}
+.nav-links{display:flex;align-items:center;gap:4px;flex-wrap:nowrap}.nav-links a{font:500 12px/1 'Inter',sans-serif;letter-spacing:0.5px;color:rgba(255,255,255,0.55);padding:8px 14px;border-radius:100px;transition:all 0.2s var(--ease);white-space:nowrap}.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}.nav-links a.active{color:var(--gold)}
+.nav-cta{background:var(--gold-grad) !important;color:#000 !important;font:700 11px/1 'Inter',sans-serif !important;letter-spacing:1.5px !important;text-transform:uppercase;padding:12px 22px !important;border-radius:100px !important;transition:all 0.3s !important}.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,215,0,0.35) !important}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}.nav-hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px}
+.sec{padding:140px 6% 100px;position:relative;overflow:hidden}.sec-alt{background:var(--surface)}.wrap{max-width:1320px;margin:0 auto;position:relative;z-index:1}
+.eye{font:700 10px/1 'Inter',sans-serif;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px;margin-bottom:20px}.eye::before{content:'';display:block;width:28px;height:1px;background:var(--gold-grad);flex-shrink:0}
+h1{font:900 clamp(44px,5.5vw,88px)/1.0 'Montserrat',sans-serif;letter-spacing:-2.5px;margin-bottom:24px;color:var(--white)}h2{font:900 clamp(32px,4vw,62px)/1.05 'Montserrat',sans-serif;letter-spacing:-1.5px;margin-bottom:24px;color:var(--white)}h3{font:900 20px/1.2 'Montserrat',sans-serif;margin-bottom:12px;color:var(--white)}
+.gold{background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.divider{width:48px;height:3px;background:var(--gold-grad);border-radius:99px;margin:20px 0 40px}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:40px;transition:all 0.4s var(--ease);position:relative;overflow:hidden}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold-grad);opacity:0;transition:opacity 0.3s}.card:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(0,0,0,0.5);border-color:rgba(255,215,0,0.12)}.card:hover::before{opacity:1}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold-grad);color:#000;font:800 12px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:20px 48px;border-radius:100px;transition:all 0.3s var(--ease);border:none;cursor:pointer}.btn-gold:hover{transform:translateY(-3px);box-shadow:0 20px 60px rgba(255,215,0,0.35)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);font:700 12px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:18px 40px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.15);transition:all 0.3s var(--ease)}.btn-ghost:hover{border-color:rgba(255,215,0,0.4);color:var(--gold);transform:translateY(-3px)}
 .muted{color:var(--muted);font-size:17px;line-height:1.8;max-width:600px;margin-bottom:40px}
-.divider{width:48px;height:3px;background:linear-gradient(135deg,#FFD700,#C8920A);border-radius:99px;margin:20px 0 36px}
-.btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font:800 12px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:20px 48px;border-radius:100px;transition:all 0.3s}
-.btn-gold:hover{transform:translateY(-3px);box-shadow:0 20px 60px rgba(255,215,0,0.35)}
-.btn-ghost{display:inline-flex;align-items:center;gap:10px;background:transparent;color:#fff;font:700 12px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:18px 40px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.18);transition:all 0.3s}
-.btn-ghost:hover{border-color:rgba(255,215,0,0.5);color:#FFD700;transform:translateY(-3px)}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:40px;transition:all 0.4s var(--ease)}
-.card:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(0,0,0,0.5)}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.footer{background:#050505;border-top:1px solid rgba(255,255,255,0.06);padding:60px 6%}
-.footer-inner{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
-.footer-logo{font:900 18px/1 'Montserrat',sans-serif;background:linear-gradient(135deg,#FFD700,#C8920A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.footer-links{display:flex;gap:24px;flex-wrap:wrap}
-.footer-links a{font:400 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;transition:color 0.2s}
-.footer-links a:hover{color:#FFD700}
-.footer-copy{font:400 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.25);width:100%;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05)}
-@media(max-width:960px){.nav-links{display:none}.sec{padding:80px 5%}.grid-3,.grid-2{grid-template-columns:1fr}}
-
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:100px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-20%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,215,0,0.06) 0%,transparent 70%);pointer-events:none}
+.footer{background:#040404;border-top:1px solid var(--border)}.footer-top{padding:80px 6%}.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:60px}.footer-logo{display:flex;align-items:baseline;gap:3px;margin-bottom:16px}.footer-tagline{font:400 15px/1.7 'Inter',sans-serif;color:rgba(255,255,255,0.4);max-width:260px;margin-bottom:28px}.footer-socials{display:flex;gap:12px}.footer-socials a{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s;text-decoration:none}.footer-socials a:hover{background:rgba(255,215,0,0.1);border-color:rgba(255,215,0,0.3)}.footer-col-title{font:700 10px/1 'Inter',sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:20px}.footer-col a{display:block;font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.5);margin-bottom:12px;transition:color 0.2s;text-decoration:none}.footer-col a:hover{color:var(--gold)}.footer-bottom{border-top:1px solid rgba(255,255,255,0.04);padding:24px 6%}.footer-bottom-inner{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}.footer-copy{font:400 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.2)}.footer-badges{display:flex;gap:20px;flex-wrap:wrap}.footer-badges span{font:500 11px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:0.5px}
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}.fade-up.vis{opacity:1;transform:translateY(0)}.fade-up.d1{transition-delay:0.1s}.fade-up.d2{transition-delay:0.2s}.fade-up.d3{transition-delay:0.3s}.fade-up.d4{transition-delay:0.4s}
+@media(max-width:1024px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.97);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:190}.nav-links.open{display:flex}.nav-links a{font-size:20px !important;padding:12px 24px !important}.nav-hamburger{display:flex;z-index:210}.footer-inner{grid-template-columns:1fr 1fr !important}.grid-2{grid-template-columns:1fr !important}.sec{padding:100px 5% 70px}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr !important}h1{font-size:clamp(38px,10vw,56px) !important}}
+/* PAGE-SPECIFIC */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:100px;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:-20%;left:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,215,0,0.06) 0%,transparent 70%);pointer-events:none}
 .hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
-.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:80px}
-.stat-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center}
-.stat-num{font:900 48px/1 'Montserrat',sans-serif;background:linear-gradient(135deg,#FFD700,#C8920A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
-.stat-label{color:var(--muted);font-size:13px;letter-spacing:0.5px}
-.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.service-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:40px;display:flex;gap:24px}
-.service-icon{font-size:40px;flex-shrink:0}
-.service-card h3{margin-bottom:12px}
-.service-card p{color:var(--muted);font-size:15px;line-height:1.7}
-.price-highlight{background:linear-gradient(135deg,rgba(255,215,0,0.06),transparent);border:1px solid rgba(255,215,0,0.15);border-radius:var(--r-xl);padding:60px;text-align:center;max-width:600px;margin:0 auto}
-.price-main{font:900 80px/1 'Montserrat',sans-serif;background:linear-gradient(135deg,#FFD700,#C8920A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:80px}.stat-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center}.stat-num{font:900 48px/1 'Montserrat',sans-serif;background:linear-gradient(135deg,#FFD700,#C8920A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}.stat-label{color:var(--muted);font-size:13px;letter-spacing:0.5px}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}.service-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:40px;display:flex;gap:24px}.service-icon{font-size:40px;flex-shrink:0}.service-card h3{margin-bottom:12px}.service-card p{color:var(--muted);font-size:15px;line-height:1.7}
+.price-highlight{background:linear-gradient(135deg,rgba(255,215,0,0.06),transparent);border:1px solid rgba(255,215,0,0.15);border-radius:var(--r-lg);padding:60px;text-align:center;max-width:600px;margin:0 auto}.price-main{font:900 80px/1 'Montserrat',sans-serif;background:linear-gradient(135deg,#FFD700,#C8920A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .cta-sec{text-align:center;background:linear-gradient(135deg,rgba(255,215,0,0.05),transparent);border-top:1px solid rgba(255,215,0,0.1)}
 @media(max-width:960px){.stat-row,.services-grid{grid-template-columns:1fr}}
 </style>
 </head>
-<body>
-
-<nav class="nav">
-  <a href="/" class="nav-logo">SUN STATE DIGITAL</a>
-  <div class="nav-links">
-    <a href="/website.html">Websites</a>
-    <a href="/seo.html">SEO</a>
-    <a href="/pricing.html">Pricing</a>
-    <a href="/about.html">About</a>
-    <a href="/get-started.html" class="nav-cta">Get Started</a>
+<body style="padding-top:80px">
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-logo"><span class="logo-sun">SUN</span><span class="logo-state">STATE</span><span class="logo-digital">digital</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="/website.html">Websites</a>
+      <a href="/seo.html" class="active">SEO</a>
+      <a href="/google-ads.html">Google Ads</a>
+      <a href="/social-media.html">Social</a>
+      <a href="/automation.html">Automation</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/get-started.html" class="nav-cta">Get Started →</a>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero sec sec-dark">
+<section class="hero sec">
   <div class="wrap">
     <div class="eye">Local SEO Brisbane</div>
     <h1>When Brisbane<br>Searches, You<br>Should Be <span class="gold">First.</span></h1>
-    <p class="muted">9 out of 10 Brisbane residents Google a business before they call. If you're not showing up, your competitors are getting those calls. Let's fix that â€” from $99/month, no lock-in.</p>
+    <p class="muted">9 out of 10 Brisbane residents Google a business before they call. If you're not showing up, your competitors are getting those calls. Let's fix that — from $99/month, no lock-in.</p>
     <div class="hero-btns">
-      <a href="/get-started.html" class="btn-gold">Get Found on Google â†’</a>
+      <a href="/get-started.html" class="btn-gold">Get Found on Google →</a>
       <a href="/contact.html" class="btn-ghost">Book a Free Call</a>
     </div>
     <div class="stat-row">
-      <div class="stat-box">
-        <div class="stat-num">93%</div>
-        <div class="stat-label">of searches never go past page 1</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">78%</div>
-        <div class="stat-label">of local mobile searches lead to in-store visits</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">3Ã—</div>
-        <div class="stat-label">more calls from Google Business Profile</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-num">60%</div>
-        <div class="stat-label">of clicks go to the top 3 results</div>
-      </div>
+      <div class="stat-box fade-up"><div class="stat-num">93%</div><div class="stat-label">of searches never go past page 1</div></div>
+      <div class="stat-box fade-up d1"><div class="stat-num">78%</div><div class="stat-label">of local mobile searches lead to in-store visits</div></div>
+      <div class="stat-box fade-up d2"><div class="stat-num">3×</div><div class="stat-label">more calls from Google Business Profile</div></div>
+      <div class="stat-box fade-up d3"><div class="stat-num">60%</div><div class="stat-label">of clicks go to the top 3 results</div></div>
     </div>
   </div>
 </section>
 
 <!-- WHAT IS LOCAL SEO -->
-<section class="sec sec-surface">
+<section class="sec sec-alt">
   <div class="wrap">
     <div class="grid-2">
       <div>
         <div class="eye">What Is Local SEO?</div>
         <h2>The Difference Between<br><span class="gold">Busy and Quiet.</span></h2>
         <div class="divider"></div>
-        <p style="color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:20px">Local SEO is the process of optimising your online presence so that when someone in Brisbane searches for your service, you appear at the top of Google â€” in the map pack, in organic results, everywhere that counts.</p>
-        <p style="color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:36px">Unlike paid ads that stop the moment you stop paying, SEO builds compounding momentum. The longer you're at it, the stronger your position gets â€” and the less you spend per lead.</p>
-        <a href="/get-started.html" class="btn-gold">Start Growing Today â†’</a>
+        <p style="color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:20px">Local SEO is the process of optimising your online presence so that when someone in Brisbane searches for your service, you appear at the top of Google — in the map pack, in organic results, everywhere that counts.</p>
+        <p style="color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:36px">Unlike paid ads that stop the moment you stop paying, SEO builds compounding momentum. The longer you're at it, the stronger your position gets — and the less you spend per lead.</p>
+        <a href="/get-started.html" class="btn-gold">Start Growing Today →</a>
       </div>
       <div>
         <div class="card" style="padding:48px">
           <h3 style="margin-bottom:24px;font-size:18px">What We Optimise</h3>
           <div style="display:flex;flex-direction:column;gap:16px">
-            <div style="display:flex;align-items:flex-start;gap:16px">
-              <span style="color:#FFD700;font-size:20px;margin-top:2px">ðŸ“</span>
-              <div>
-                <div style="font:700 14px/1 'Inter',sans-serif;margin-bottom:6px">Google Business Profile</div>
-                <div style="color:var(--muted);font-size:13px">The #1 factor for appearing in the local map pack. We optimise every field, add photos, manage reviews.</div>
-              </div>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:16px">
-              <span style="color:#FFD700;font-size:20px;margin-top:2px">ðŸ”‘</span>
-              <div>
-                <div style="font:700 14px/1 'Inter',sans-serif;margin-bottom:6px">Keyword Targeting</div>
-                <div style="color:var(--muted);font-size:13px">Research what your Brisbane customers actually search for, then build your content around those terms.</div>
-              </div>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:16px">
-              <span style="color:#FFD700;font-size:20px;margin-top:2px">ðŸŒ</span>
-              <div>
-                <div style="font:700 14px/1 'Inter',sans-serif;margin-bottom:6px">Citation Building</div>
-                <div style="color:var(--muted);font-size:13px">Consistent business listings across directories â€” Yellow Pages, True Local, Yelp, and 50+ more.</div>
-              </div>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:16px">
-              <span style="color:#FFD700;font-size:20px;margin-top:2px">ðŸ“Š</span>
-              <div>
-                <div style="font:700 14px/1 'Inter',sans-serif;margin-bottom:6px">Monthly Reporting</div>
-                <div style="color:var(--muted);font-size:13px">Clear reports showing rankings, traffic, calls, and what we're doing to keep moving up.</div>
-              </div>
-            </div>
+            <div style="display:flex;align-items:flex-start;gap:16px"><span style="color:#FFD700;font-size:20px;margin-top:2px">📍</span><div><div style="font:700 14px/1 'Inter',sans-serif;margin-bottom:6px">Google Business Profile</div><div style="color:var(--muted);font-size:13px">The #1 factor for appearing in the local map pack. We optimise every field, add photos, manage reviews.</div></div></div>
+            <div style="display:flex;align-items:flex-start;gap:16px"><span style="color:#FFD700;font-size:20px;margin-top:2px">🔑</span><div><div style="font:700 14px/1 'Inter',sans-serif;margin-bottom:6px">Keyword Targeting</div><div style="color:var(--muted);font-size:13px">Research what your Brisbane customers actually search for, then build your content around those terms.</div></div></div>
+            <div style="display:flex;align-items:flex-start;gap:16px"><span style="color:#FFD700;font-size:20px;margin-top:2px">🌐</span><div><div style="font:700 14px/1 'Inter',sans-serif;margin-bottom:6px">Citation Building</div><div style="color:var(--muted);font-size:13px">Consistent business listings across directories — Yellow Pages, True Local, Yelp, and 50+ more.</div></div></div>
+            <div style="display:flex;align-items:flex-start;gap:16px"><span style="color:#FFD700;font-size:20px;margin-top:2px">📊</span><div><div style="font:700 14px/1 'Inter',sans-serif;margin-bottom:6px">Monthly Reporting</div><div style="color:var(--muted);font-size:13px">Clear reports showing rankings, traffic, calls, and what we're doing to keep moving up.</div></div></div>
           </div>
         </div>
       </div>
@@ -160,60 +103,24 @@ h3{font:900 22px/1.2 'Montserrat',sans-serif;margin-bottom:12px}
 </section>
 
 <!-- SERVICES -->
-<section class="sec sec-dark">
+<section class="sec">
   <div class="wrap">
     <div class="eye">What's Included</div>
     <h2>Everything You Need<br><span class="gold">to Rank Higher.</span></h2>
     <div class="divider"></div>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">ðŸ“</div>
-        <div>
-          <h3>Google Business Profile Optimisation</h3>
-          <p>We fully optimise your GBP â€” business info, categories, services, photos, Q&A, and regular posts. This alone can triple your local visibility.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">ðŸ“</div>
-        <div>
-          <h3>On-Page SEO</h3>
-          <p>Title tags, meta descriptions, heading structure, internal linking, image alt text, schema markup â€” every technical detail that Google uses to rank your pages.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">ðŸŒ</div>
-        <div>
-          <h3>Citation Building & Cleanup</h3>
-          <p>We build consistent, accurate business listings across 50+ Australian directories. Inconsistent NAP data is one of the biggest local SEO killers â€” we fix it.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">â­</div>
-        <div>
-          <h3>Review Strategy</h3>
-          <p>More 5-star reviews mean higher rankings and more trust. We set up automated review request systems to get your happy customers talking.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">ðŸ”—</div>
-        <div>
-          <h3>Link Building</h3>
-          <p>Quality backlinks from relevant Brisbane and Australian sites signal to Google that your business is authoritative and trustworthy.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">ðŸ“Š</div>
-        <div>
-          <h3>Monthly Reporting</h3>
-          <p>Plain-English monthly reports showing keyword rankings, Google Business Profile views, calls generated, and a clear breakdown of what we're working on next month.</p>
-        </div>
-      </div>
+      <div class="service-card fade-up"><div class="service-icon">📍</div><div><h3>Google Business Profile Optimisation</h3><p>We fully optimise your GBP — business info, categories, services, photos, Q&A, and regular posts. This alone can triple your local visibility.</p></div></div>
+      <div class="service-card fade-up d1"><div class="service-icon">🔍</div><div><h3>On-Page SEO</h3><p>Title tags, meta descriptions, heading structure, internal linking, image alt text, schema markup — every technical detail that Google uses to rank your pages.</p></div></div>
+      <div class="service-card fade-up d2"><div class="service-icon">🌐</div><div><h3>Citation Building & Cleanup</h3><p>We build consistent, accurate business listings across 50+ Australian directories. Inconsistent NAP data is one of the biggest local SEO killers — we fix it.</p></div></div>
+      <div class="service-card fade-up d3"><div class="service-icon">⭐</div><div><h3>Review Strategy</h3><p>More 5-star reviews mean higher rankings and more trust. We set up automated review request systems to get your happy customers talking.</p></div></div>
+      <div class="service-card fade-up"><div class="service-icon">🔗</div><div><h3>Link Building</h3><p>Quality backlinks from relevant Brisbane and Australian sites signal to Google that your business is authoritative and trustworthy.</p></div></div>
+      <div class="service-card fade-up d1"><div class="service-icon">📊</div><div><h3>Monthly Reporting</h3><p>Plain-English monthly reports showing keyword rankings, Google Business Profile views, calls generated, and a clear breakdown of what we're working on next month.</p></div></div>
     </div>
   </div>
 </section>
 
 <!-- PRICING -->
-<section class="sec sec-surface">
+<section class="sec sec-alt">
   <div class="wrap" style="text-align:center">
     <div class="eye" style="justify-content:center">Transparent Pricing</div>
     <h2>No Hidden Fees.<br><span class="gold">Just Results.</span></h2>
@@ -221,44 +128,36 @@ h3{font:900 22px/1.2 'Montserrat',sans-serif;margin-bottom:12px}
     <div class="price-highlight">
       <div style="color:var(--muted);font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Starting from</div>
       <div class="price-main">$99</div>
-      <div style="color:var(--muted);font-size:16px;margin:12px 0 32px">/ month â€” no lock-in contract</div>
-      <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:36px">Cancel any time. Most clients see ranking movement within 60â€“90 days, and results compound over time. The longer you invest, the bigger the return.</p>
-      <a href="/get-started.html" class="btn-gold">Start My SEO Journey â†’</a>
+      <div style="color:var(--muted);font-size:16px;margin:12px 0 32px">/ month — no lock-in contract</div>
+      <p style="color:var(--muted);font-size:15px;line-height:1.8;margin-bottom:36px">Cancel any time. Most clients see ranking movement within 60–90 days, and results compound over time. The longer you invest, the bigger the return.</p>
+      <a href="/get-started.html" class="btn-gold">Start My SEO Journey →</a>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="sec cta-sec">
-  <div class="wrap" style="text-align:center">
+  <div class="wrap">
     <div class="eye" style="justify-content:center">Ready to Rank?</div>
     <h2>Your Competitors Are Already<br>Investing in SEO.</h2>
     <div class="divider" style="margin:20px auto 24px"></div>
-    <p class="muted" style="margin:0 auto 40px">Every month you wait is another month your competitors move further up the rankings. Start now â€” from $99/month, no lock-in.</p>
+    <p class="muted" style="margin:0 auto 40px">Every month you wait is another month your competitors move further up the rankings. Start now — from $99/month, no lock-in.</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a href="/get-started.html" class="btn-gold">Get Started â€” $99/month â†’</a>
+      <a href="/get-started.html" class="btn-gold">Get Started — $99/month →</a>
       <a href="/contact.html" class="btn-ghost">Book a Free Strategy Call</a>
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-logo">SUN STATE DIGITAL</div>
-    <div class="footer-links">
-      <a href="/website.html">Websites</a>
-      <a href="/seo.html">SEO</a>
-      <a href="/google-ads.html">Google Ads</a>
-      <a href="/social-media.html">Social Media</a>
-      <a href="/automation.html">Automation</a>
-      <a href="/pricing.html">Pricing</a>
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/privacy.html">Privacy</a>
-    </div>
-    <div class="footer-copy">Â© 2026 Sun State Digital. Proudly Brisbane-based. ABN pending.</div>
-  </div>
+  <div class="footer-top"><div class="footer-inner">
+    <div><div class="footer-logo"><span class="logo-sun">SUN</span><span class="logo-state">STATE</span><span class="logo-digital">digital</span></div><p class="footer-tagline">Helping Brisbane businesses get found, trusted, and chosen — every single day.</p><div class="footer-socials"><a href="#" aria-label="Facebook">🐦</a><a href="#" aria-label="Instagram">📷</a><a href="#" aria-label="LinkedIn">🔗</a></div></div>
+    <div class="footer-col"><div class="footer-col-title">Services</div><a href="/website.html">Website Design</a><a href="/seo.html">Local SEO</a><a href="/google-ads.html">Google Ads</a><a href="/social-media.html">Social Media</a><a href="/automation.html">Automation & CRM</a></div>
+    <div class="footer-col"><div class="footer-col-title">Company</div><a href="/about.html">About Us</a><a href="/pricing.html">Pricing</a><a href="/get-started.html">Get Started</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy Policy</a></div>
+    <div class="footer-col"><div class="footer-col-title">Brisbane HQ</div><p style="color:rgba(255,255,255,0.45);font-size:14px;line-height:1.8;">Proudly based in<br>Brisbane, Queensland<br>Australia</p><a href="mailto:info@sunstatedigital.com.au" style="color:#FFD700;font-size:14px;margin-top:12px;display:block;">info@sunstatedigital.com.au</a><a href="/get-started.html" style="display:inline-flex;margin-top:20px;background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:12px 24px;border-radius:100px;text-decoration:none;">Book Free Call →</a></div>
+  </div></div>
+  <div class="footer-bottom"><div class="footer-bottom-inner"><div class="footer-copy">© 2026 Sun State Digital Pty Ltd. Proudly Brisbane-based. All rights reserved.</div><div class="footer-badges"><span>⭐ 5-Star Rated</span><span>⚡ 24hr Delivery</span><span>🔒 No Lock-in</span><span>📍 Brisbane Local</span></div></div></div>
 </footer>
-
+<script>window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});document.querySelectorAll('.fade-up').forEach(function(el){io.observe(el);});</script>
 </body>
 </html>
