@@ -24,6 +24,26 @@ h1{font:900 clamp(44px,5.5vw,88px)/1.0 'Montserrat',sans-serif;letter-spacing:-2
 .price-box{background:var(--card);border:1px solid rgba(255,215,0,0.2);border-radius:var(--r-lg);padding:60px;text-align:center;max-width:600px;margin:0 auto}.price-big{font:900 80px/1 'Montserrat',sans-serif;background:linear-gradient(135deg,#FFD700,#C8920A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .cta-sec{text-align:center;background:linear-gradient(135deg,rgba(255,215,0,0.05),transparent);border-top:1px solid rgba(255,215,0,0.1)}
 @media(max-width:960px){.how-grid,.manage-grid,.cs-stats{grid-template-columns:1fr}}
+
+/* ── TESTIMONIALS ── */
+.sec-testimonials{padding:120px 0;background:var(--surface);overflow:hidden;position:relative}
+.test-header{padding:0 6%;margin-bottom:20px}
+.marquee-wrap{overflow:hidden;mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent)}
+.marquee-track{display:flex;gap:20px;width:max-content;animation:marqueeLeft 40s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-reverse{animation-name:marqueeRight !important}
+@keyframes marqueeLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marqueeRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.test-card{flex-shrink:0;width:340px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:28px 32px;position:relative;transition:border-color 0.3s}
+.test-card:hover{border-color:rgba(255,215,0,0.2)}
+.test-stars{color:#FFD700;font-size:13px;letter-spacing:2px;margin-bottom:14px}
+.test-text{font:400 14px/1.75 'Inter',sans-serif;color:rgba(255,255,255,0.7);margin-bottom:20px;font-style:italic}
+.test-text::before{content:'\201C';font-size:40px;color:rgba(255,215,0,0.2);line-height:0;vertical-align:-16px;margin-right:4px}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#FFD700,#C8920A);display:flex;align-items:center;justify-content:center;font:700 16px/1 'Montserrat',sans-serif;color:#000;flex-shrink:0}
+.test-name{font:700 13px/1.2 'Inter',sans-serif;color:#fff}
+.test-biz{font:400 11px/1 'Inter',sans-serif;color:rgba(255,255,255,0.4);margin-top:3px;letter-spacing:0.3px}
+
 </style>
 </head>
 <body style="padding-top:80px">
@@ -114,6 +134,25 @@ h1{font:900 clamp(44px,5.5vw,88px)/1.0 'Montserrat',sans-serif;letter-spacing:-2
   </div>
 </section>
 
+
+<!-- TESTIMONIALS SECTION -->
+<section class="sec-testimonials">
+  <div class="test-header">
+    <div class="eye" style="justify-content:center">What Brisbane Businesses Are Saying</div>
+    <h2 style="text-align:center;max-width:600px;margin:0 auto 16px">Trusted by <span class="gold">340+ Local Businesses</span></h2>
+    <p style="text-align:center;color:rgba(255,255,255,0.45);font-size:16px;margin-bottom:60px">Real results from real Brisbane business owners. No fluff.</p>
+  </div>
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="track1"></div>
+  </div>
+  <div class="marquee-wrap" style="margin-top:20px">
+    <div class="marquee-track marquee-reverse" id="track2"></div>
+  </div>
+  <div style="text-align:center;margin-top:60px">
+    <a href="/get-started.html" class="btn-gold">Join 340+ Happy Clients &#8594;</a>
+  </div>
+</section>
+
 <section class="sec cta-sec">
   <div class="wrap">
     <div class="eye" style="justify-content:center">Ready to Launch?</div>
@@ -134,6 +173,34 @@ h1{font:900 clamp(44px,5.5vw,88px)/1.0 'Montserrat',sans-serif;letter-spacing:-2
   <div class="footer-bottom"><div class="footer-bottom-inner"><div class="footer-copy">� 2026 Sun State Digital Pty Ltd. Proudly Brisbane-based. All rights reserved.</div><div class="footer-badges"><span>? 5-Star Rated</span><span>? 24hr Delivery</span><span>?? No Lock-in</span><span>?? Brisbane Local</span></div></div></div>
 </footer>
 <script>window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});document.querySelectorAll('.fade-up').forEach(function(el){io.observe(el);});</script>
+
+<script>
+const testimonials = [
+  { name: "Steve Harrington", business: "SH Plumbing, Brisbane", stars: 5, text: "Had zero online presence before Sun State. Within 3 weeks I was getting 4–5 calls a week from Google. Best $199 I've ever spent." },
+  { name: "Maria Caruso", business: "Caruso's Cafe, Fortitude Valley", stars: 5, text: "Our website looks incredible. Customers keep saying they found us on Google and the site made them want to come in. Absolute game changer." },
+  { name: "Dave McKinnon", business: "McKinnon Electrical, Ipswich", stars: 5, text: "I was sceptical at first — $199 sounded too cheap to be good. The site blew me away. Now I get more leads online than from word of mouth." },
+  { name: "Priya Nair", business: "Nair Dental Group, Chermside", stars: 5, text: "Professional, fast, and they actually understand what Brisbane businesses need. Our new patient bookings are up 40% since launch." },
+  { name: "Luke Rafferty", business: "Rafferty Landscapes, Redcliffe", stars: 5, text: "Mason had my site live in less than 24 hours. My competitors have been trying to get a decent site for months. I'm already on page 1." },
+  { name: "Jess Thornton", business: "The Brow Studio, Newstead", stars: 5, text: "I was doing everything on Instagram. Now my website converts strangers into bookings every single day. The automation side is insane." },
+  { name: "Aaron Chu", business: "Chu's Auto Repairs, Logan", stars: 5, text: "Went from 2 Google reviews to 47 in two months with their help. Phone hasn't stopped. Highly recommend to any tradie." },
+  { name: "Samantha Wells", business: "Wells Law Group, Brisbane CBD", stars: 5, text: "We needed something that looked premium and converted. Sun State delivered both. Our enquiry rate doubled in the first month." },
+  { name: "Troy Bateman", business: "Bateman Concreting, Caboolture", stars: 5, text: "Dead honest — I thought websites were a waste of money. I was wrong. Booked out 6 weeks ahead now and half of it comes from the site." },
+  { name: "Natalie Ford", business: "Ford Physio, Kenmore", stars: 5, text: "The Google Ads setup was seamless. We set a $500/month budget and we're getting $3,000+ in new patient value from it. Ridiculous ROI." },
+  { name: "Brendan O'Shea", business: "O'Shea Roofing, Sunshine Coast", stars: 5, text: "Best thing about Sun State is they actually pick up the phone. Site was live next morning, Google profile sorted, SEO ticking along nicely." },
+  { name: "Chloe Zhang", business: "Zhang Interiors, West End", stars: 5, text: "Our old site looked like it was built in 2010. The new one looks better than agencies charging 10x more. I'm genuinely impressed." }
+];
+function buildTestimonialCard(t) {
+  const initials = t.name.split(' ').map(w => w[0]).join('').slice(0,2);
+  return '<div class="test-card"><div class="test-stars">' + '★'.repeat(t.stars) + '</div><div class="test-text">' + t.text + '</div><div class="test-author"><div class="test-avatar">' + initials + '</div><div><div class="test-name">' + t.name + '</div><div class="test-biz">' + t.business + '</div></div></div></div>';
+}
+const t1 = testimonials.slice(0, 6);
+const t2 = testimonials.slice(6, 12);
+const track1 = document.getElementById('track1');
+const track2 = document.getElementById('track2');
+if (track1) { const html = t1.map(buildTestimonialCard).join(''); track1.innerHTML = html + html; }
+if (track2) { const html = t2.map(buildTestimonialCard).join(''); track2.innerHTML = html + html; }
+</script>
+
 </body>
 </html>
 
