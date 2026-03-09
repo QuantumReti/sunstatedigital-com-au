@@ -462,6 +462,74 @@ setTimeout(function(){
 },30000);
 </script>
 
+
+<!-- MASON CHAT WIDGET CSS -->
+<style>
+#masonBtn{position:fixed;bottom:28px;right:28px;z-index:9999;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#FFD700,#C8920A);border:none;cursor:pointer;box-shadow:0 8px 32px rgba(255,215,0,0.4);display:flex;align-items:center;justify-content:center;font-size:26px;transition:transform 0.3s,box-shadow 0.3s}
+#masonBtn:hover{transform:scale(1.1);box-shadow:0 12px 48px rgba(255,215,0,0.5)}
+#masonPanel{position:fixed;bottom:104px;right:28px;z-index:9998;width:360px;max-height:520px;background:#111;border:1px solid rgba(255,215,0,0.2);border-radius:20px;display:flex;flex-direction:column;box-shadow:0 32px 80px rgba(0,0,0,0.6);overflow:hidden;opacity:0;transform:translateY(20px) scale(0.95);pointer-events:none;transition:opacity 0.35s ease,transform 0.35s cubic-bezier(0.34,1.56,0.64,1)}
+#masonPanel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
+.mason-header{background:linear-gradient(135deg,#FFD700,#C8920A);padding:16px 20px;display:flex;align-items:center;gap:12px}
+.mason-avatar{width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.mason-header-info{flex:1}
+.mason-header-name{font:700 14px/1 'Inter',sans-serif;color:#000}
+.mason-header-sub{font:400 11px/1 'Inter',sans-serif;color:rgba(0,0,0,0.6);margin-top:4px}
+.mason-close{background:rgba(0,0,0,0.15);border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;color:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1}
+#masonMessages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin;scrollbar-color:rgba(255,215,0,0.2) transparent}
+.mason-msg-wrap{display:flex;flex-direction:column;gap:4px;max-width:85%}
+.mason-msg-wrap.mason-user-msg{align-self:flex-end;align-items:flex-end}
+.mason-msg{padding:10px 14px;border-radius:16px;font:400 14px/1.5 'Inter',sans-serif}
+.mason-msg-wrap:not(.mason-user-msg) .mason-msg{background:#1a1a1a;color:#fff;border-radius:4px 16px 16px 16px;border:1px solid rgba(255,255,255,0.06)}
+.mason-msg-wrap.mason-user-msg .mason-msg{background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font-weight:600;border-radius:16px 16px 4px 16px}
+.mason-msg-time{font:400 10px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);padding:0 4px}
+.mason-input-row{padding:12px 16px;border-top:1px solid rgba(255,255,255,0.06);display:flex;gap:10px;align-items:center;background:#0d0d0d}
+#masonInput{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:10px 16px;color:#fff;font:400 13px/1 'Inter',sans-serif;outline:none;transition:border-color 0.2s}
+#masonInput:focus{border-color:rgba(255,215,0,0.4)}
+#masonInput::placeholder{color:rgba(255,255,255,0.3)}
+#masonSendBtn{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#FFD700,#C8920A);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;transition:transform 0.2s}
+#masonSendBtn:hover{transform:scale(1.1)}
+@media(max-width:480px){#masonPanel{width:calc(100vw - 40px);right:20px;bottom:96px}}
+</style>
+
+<!-- MASON CHAT WIDGET -->
+<button id="masonBtn" onclick="toggleMason()" aria-label="Chat with Mason">&#128172;</button>
+<div id="masonPanel">
+  <div class="mason-header">
+    <div class="mason-avatar">&#129302;</div>
+    <div class="mason-header-info">
+      <div class="mason-header-name">Mason</div>
+      <div class="mason-header-sub">Josh's assistant &middot; Usually replies instantly</div>
+    </div>
+    <button class="mason-close" onclick="toggleMason()">&#10005;</button>
+  </div>
+  <div id="masonMessages">
+    <div class="mason-msg-wrap">
+      <div class="mason-msg">Hey! &#128075; I'm Mason, Josh's assistant here at Sun State Digital.<br><br>Before I help &mdash; what's your name?</div>
+      <div class="mason-msg-time">Mason &middot; Just now</div>
+    </div>
+  </div>
+  <div class="mason-input-row">
+    <input id="masonInput" type="text" placeholder="Type your name..." onkeydown="if(event.key==='Enter')msnSend()" autocomplete="off">
+    <button id="masonSendBtn" onclick="msnSend()">&#10148;</button>
+  </div>
+</div>
+
+<!-- MASON CHAT WIDGET JS -->
+<script>
+var msnName='',msnStep=0,msnOpen=false;
+function toggleMason(){msnOpen=!msnOpen;var p=document.getElementById('masonPanel');if(msnOpen){p.classList.add('open');setTimeout(function(){document.getElementById('masonInput').focus()},350)}else{p.classList.remove('open')}}
+function msnSend(){var i=document.getElementById('masonInput'),t=i.value.trim();if(!t)return;i.value='';addUMsg(t);
+if(msnStep===0){msnName=t.split(' ')[0];msnStep=1;document.getElementById('masonInput').placeholder='Tell me about your business...';msnDelay(function(){addMMsg('Nice to meet you, '+msnName+'! \ud83d\ude0a');msnDelay(function(){addMMsg("What's going on with your business right now? Are you looking to get more customers online, or something else?")},600)},400)}
+else if(msnStep===1){msnStep=2;var r=msnCtx(t);msnDelay(function(){addMMsg(r)},500)}
+else if(msnStep===2){msnStep=3;var h=msnHook(t);msnDelay(function(){addMMsg(h);msnDelay(function(){addMMsg("Here\u2019s what I\u2019d suggest \u2014 a quick 15-min call with Josh. He\u2019ll look at your situation, tell you exactly what to do, zero pressure. Want me to sort that? \ud83d\udcc5")},1200)},600)}
+else{var lc=t.toLowerCase();if(/yes|yeah|sure|ok|book|call|love|great|sounds/.test(lc)){msnDelay(function(){addMMsg('Perfect! \ud83d\ude4c Jumping to WhatsApp to send the booking link \u2014 easier over there. See you in a sec!');setTimeout(function(){window.open('https://wa.me/61404755888?text='+encodeURIComponent('Hi Mason! I just chatted on the Sun State Digital website. My name is '+msnName+'.'),'_blank')},1000)},500)}else{msnDelay(function(){addMMsg("Of course! What else do you want to know? I\u2019m not going anywhere \ud83d\ude0a")},400)}}}
+function msnDelay(fn,ms){setTimeout(fn,ms||500)}
+function msnCtx(t){t=t.toLowerCase();if(/website|site\b|web/.test(t))return'Got it \u2014 do you have a site already, or starting from scratch?';if(/seo|google|rank|found|search/.test(t))return'Ahh, the Google problem \ud83d\ude05 Are people finding you online right now, or basically invisible?';if(/ads|facebook|instagram|social/.test(t))return'Nice \u2014 running ads already, or just exploring the idea?';if(/leads|customers|jobs|clients|enquir/.test(t))return'Love it \u2014 where are most of your leads coming from right now?';if(/price|cost|how much|afford/.test(t))return'Honestly our stuff is way more affordable than most expect. What service were you thinking about?';if(/help|not sure|lost|unsure/.test(t))return"No worries \u2014 that\u2019s what I\u2019m here for. What do you do for work?";return'Interesting \u2014 what does your online presence look like right now?'}
+function msnHook(t){t=t.toLowerCase();if(/no site|no website|nothing|invisible|not found/.test(t))return"If you\u2019re not on Google, your competitors are taking those jobs right now. Most businesses lose 5-10 enquiries a week without knowing it.";if(/old|bad site|not working|outdated|slow/.test(t))return"A site that doesn\u2019t convert is worse than none \u2014 it kills trust before you even speak to them. Good news: we fix that fast.";if(/referral|word of mouth|mates|friends/.test(t))return"Referrals are gold \u2014 but what happens when they Google you and the site doesn\u2019t back it up?";return"You\u2019re ahead of most owners just by looking into this. The ones who wait end up scrambling."}
+function addUMsg(t){var m=document.getElementById('masonMessages'),w=document.createElement('div');w.className='mason-msg-wrap mason-user-msg';w.innerHTML='<div class="mason-msg">'+t+'</div><div class="mason-msg-time">You \u00b7 Just now</div>';m.appendChild(w);m.scrollTop=m.scrollHeight}
+function addMMsg(t){var m=document.getElementById('masonMessages'),w=document.createElement('div');w.className='mason-msg-wrap';w.innerHTML='<div class="mason-msg">'+t+'</div><div class="mason-msg-time">Mason \u00b7 Just now</div>';m.appendChild(w);m.scrollTop=m.scrollHeight}
+setTimeout(function(){if(!msnOpen&&!sessionStorage.getItem('msnSeen')){toggleMason();sessionStorage.setItem('msnSeen','1')}},45000);
+</script>
 </body>
 </html>
 
