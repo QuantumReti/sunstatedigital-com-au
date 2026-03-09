@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're In Good Hands | Sun State Digital Brisbane</title>
+<meta name="description" content="Thank you for booking with Sun State Digital. We'll be in touch within 24 hours. While you wait, discover what Brisbane's smartest businesses know about AI.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@400;500;600;700&display=swap');
+:root{--black:#000;--surface:#0a0a0a;--card:#111;--card-hover:#161616;--border:rgba(255,255,255,0.06);--white:#fff;--muted:rgba(255,255,255,0.45);--gold:#FFD700;--gold-mid:#C8920A;--gold-dark:#6B4200;--gold-grad:linear-gradient(135deg,#FFD700 0%,#C8920A 60%,#6B4200 100%);--r:16px;--r-lg:28px;--ease:cubic-bezier(0.4,0,0.2,1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6}a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:all 0.3s var(--ease)}.nav.scrolled{background:rgba(0,0,0,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,215,0,0.08);box-shadow:0 4px 40px rgba(0,0,0,0.4)}.nav-inner{max-width:1400px;margin:0 auto;padding:22px 6%;display:flex;align-items:center;justify-content:space-between;gap:32px}.nav-logo{display:flex;align-items:baseline;gap:3px}.logo-sun{font:900 18px/1 'Montserrat',sans-serif;background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:2px}.logo-state{font:900 18px/1 'Montserrat',sans-serif;color:var(--white);letter-spacing:2px}.logo-digital{font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-left:4px}.nav-links{display:flex;align-items:center;gap:4px;flex-wrap:nowrap}.nav-links a{font:500 12px/1 'Inter',sans-serif;letter-spacing:0.5px;color:rgba(255,255,255,0.55);padding:8px 14px;border-radius:100px;transition:all 0.2s var(--ease);white-space:nowrap}.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}.nav-cta{background:var(--gold-grad) !important;color:#000 !important;font:700 11px/1 'Inter',sans-serif !important;letter-spacing:1.5px !important;text-transform:uppercase;padding:12px 22px !important;border-radius:100px !important;transition:all 0.3s !important}.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,215,0,0.35) !important}.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}.nav-hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px}
+.sec{padding:140px 6% 100px;position:relative;overflow:hidden}.sec-alt{background:var(--surface)}.wrap{max-width:1320px;margin:0 auto;position:relative;z-index:1}
+.eye{font:700 10px/1 'Inter',sans-serif;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px;margin-bottom:20px}.eye::before{content:'';display:block;width:28px;height:1px;background:var(--gold-grad);flex-shrink:0}
+h1{font:900 clamp(44px,5.5vw,88px)/1.0 'Montserrat',sans-serif;letter-spacing:-2.5px;margin-bottom:24px;color:var(--white)}h2{font:900 clamp(32px,4vw,62px)/1.05 'Montserrat',sans-serif;letter-spacing:-1.5px;margin-bottom:24px;color:var(--white)}h3{font:900 20px/1.2 'Montserrat',sans-serif;margin-bottom:12px;color:var(--white)}
+.gold{background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.divider{width:48px;height:3px;background:var(--gold-grad);border-radius:99px;margin:20px 0 40px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:40px;transition:all 0.4s var(--ease);position:relative;overflow:hidden}.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold-grad);opacity:0;transition:opacity 0.3s}.card:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(0,0,0,0.5);border-color:rgba(255,215,0,0.12)}.card:hover::before{opacity:1}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold-grad);color:#000;font:800 12px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:20px 48px;border-radius:100px;transition:all 0.3s var(--ease);border:none;cursor:pointer}.btn-gold:hover{transform:translateY(-3px);box-shadow:0 20px 60px rgba(255,215,0,0.35)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);font:700 12px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:18px 40px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.15);transition:all 0.3s var(--ease)}.btn-ghost:hover{border-color:rgba(255,215,0,0.4);color:var(--gold);transform:translateY(-3px)}
+.footer{background:#040404;border-top:1px solid var(--border)}.footer-top{padding:80px 6%}.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:60px}.footer-logo{display:flex;align-items:baseline;gap:3px;margin-bottom:16px}.footer-tagline{font:400 15px/1.7 'Inter',sans-serif;color:rgba(255,255,255,0.4);max-width:260px;margin-bottom:28px}.footer-socials{display:flex;gap:12px}.footer-socials a{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s;text-decoration:none}.footer-socials a:hover{background:rgba(255,215,0,0.1);border-color:rgba(255,215,0,0.3)}.footer-col-title{font:700 10px/1 'Inter',sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:20px}.footer-col a{display:block;font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.5);margin-bottom:12px;transition:color 0.2s;text-decoration:none}.footer-col a:hover{color:var(--gold)}.footer-bottom{border-top:1px solid rgba(255,255,255,0.04);padding:24px 6%}.footer-bottom-inner{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}.footer-copy{font:400 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.2)}.footer-badges{display:flex;gap:20px;flex-wrap:wrap}.footer-badges span{font:500 11px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:0.5px}
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}.fade-up.vis{opacity:1;transform:translateY(0)}.fade-up.d1{transition-delay:0.1s}.fade-up.d2{transition-delay:0.2s}.fade-up.d3{transition-delay:0.3s}.fade-up.d4{transition-delay:0.4s}
+@media(max-width:1024px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.97);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:190}.nav-links.open{display:flex}.nav-links a{font-size:20px !important;padding:12px 24px !important}.nav-hamburger{display:flex;z-index:210}.footer-inner{grid-template-columns:1fr 1fr !important}.sec{padding:100px 5% 70px}}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr !important}h1{font-size:clamp(38px,10vw,56px) !important}.article-grid{grid-template-columns:1fr !important}}
+/* PAGE-SPECIFIC */
+.hero{min-height:70vh;display:flex;align-items:center;padding-top:120px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(255,215,0,0.08) 0%,transparent 60%)}
+.confirm-badge{display:inline-flex;align-items:center;gap:12px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:100px;padding:10px 24px;margin-bottom:32px;font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#22c55e}
+.confirm-badge span{width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(0.8)}}
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.article-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:all 0.4s var(--ease)}.article-card:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(0,0,0,0.5);border-color:rgba(255,215,0,0.12)}
+.article-img{height:180px;background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(255,215,0,0.02));display:flex;align-items:center;justify-content:center;font-size:56px;border-bottom:1px solid var(--border)}
+.article-body{padding:32px}
+.article-tag{display:inline-flex;align-items:center;font:600 10px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:100px;background:rgba(255,215,0,0.08);color:var(--gold);border:1px solid rgba(255,215,0,0.18);margin-bottom:16px}
+.article-title{font:900 18px/1.3 'Montserrat',sans-serif;color:var(--white);margin-bottom:12px}
+.article-excerpt{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:20px}
+.article-link{font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:8px;transition:gap 0.3s var(--ease)}
+.article-link:hover{gap:14px}
+.cta-strip{background:linear-gradient(135deg,rgba(255,215,0,0.08),rgba(255,215,0,0.02));border:1px solid rgba(255,215,0,0.2);border-radius:var(--r-lg);padding:80px;text-align:center}
+</style>
+</head>
+<body style="padding-top:80px">
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-logo"><span class="logo-sun">SUN</span><span class="logo-state">STATE</span><span class="logo-digital">digital</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="/website.html">Websites</a><a href="/seo.html">SEO</a><a href="/google-ads.html">Google Ads</a><a href="/social-media.html">Social</a><a href="/automation.html">Automation</a><a href="/pricing.html">Pricing</a><a href="/about.html">About</a><a href="/contact.html">Contact</a>
+      <a href="/get-started.html" class="nav-cta">Get Started →</a>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero sec">
+  <div class="wrap">
+    <div class="confirm-badge"><span></span> Booking Confirmed</div>
+    <div class="eye" style="justify-content:center">You're In Good Hands</div>
+    <h1>We'll Be In Touch<br>Within <span class="gold">24 Hours.</span></h1>
+    <div class="divider" style="margin:20px auto 28px"></div>
+    <p style="color:var(--muted);font-size:19px;line-height:1.8;max-width:600px;margin:0 auto">While you wait, here's what Brisbane's smartest businesses already know about AI — and how it's reshaping the game for local service providers.</p>
+  </div>
+</section>
+
+<!-- ARTICLES SECTION -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <div class="eye">The AI Revolution Is Already Here — Is Your Business Ready?</div>
+    <h2>What Brisbane's Best<br><span class="gold">Already Know.</span></h2>
+    <div class="divider"></div>
+    <div class="article-grid">
+
+      <!-- Card 1 -->
+      <div class="article-card fade-up">
+        <div class="article-img">🤖</div>
+        <div class="article-body">
+          <div class="article-tag">AI + Automation</div>
+          <div class="article-title">How AI Is Helping Brisbane Tradies Win More Jobs</div>
+          <div class="article-excerpt">Smart automation is changing how local service businesses follow up leads, handle enquiries, and stay top-of-mind — without lifting a finger.</div>
+          <a href="#" class="article-link">Read More <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="article-card fade-up d1">
+        <div class="article-img">🔍</div>
+        <div class="article-body">
+          <div class="article-tag">SEO + Visibility</div>
+          <div class="article-title">Why 9 Out of 10 Customers Google You Before They Call</div>
+          <div class="article-excerpt">Your online presence is your first impression. Here's what Brisbane business owners need to know about showing up when it counts.</div>
+          <a href="#" class="article-link">Read More <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="article-card fade-up d2">
+        <div class="article-img">🚀</div>
+        <div class="article-body">
+          <div class="article-tag">Website Design</div>
+          <div class="article-title">The $199 Website That Outperforms $10,000 Agency Sites</div>
+          <div class="article-excerpt">How Sun State Digital builds high-converting, Google-ready websites in 24 hours — and why simplicity beats complexity every time.</div>
+          <a href="#" class="article-link">Read More <span>→</span></a>
+        </div>
+      </div>
+
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:28px;letter-spacing:0.5px">📚 Full blog launching soon — subscribe to be first to know.</p>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="sec">
+  <div class="wrap">
+    <div class="cta-strip fade-up">
+      <div class="eye" style="justify-content:center">Ready to Get Started?</div>
+      <h2 style="margin-bottom:16px">Everything You Need Is<br><span class="gold">One Click Away.</span></h2>
+      <div class="divider" style="margin:20px auto 32px"></div>
+      <p style="color:var(--muted);font-size:17px;max-width:560px;margin:0 auto 48px;line-height:1.8">Whether you're booking another call, checking our pricing, or ready to kick things off — we're here and ready to go.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="/contact.html" class="btn-gold">Book Another Call →</a>
+        <a href="/pricing.html" class="btn-ghost">See Our Pricing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-top"><div class="footer-inner">
+    <div><div class="footer-logo"><span class="logo-sun">SUN</span><span class="logo-state">STATE</span><span class="logo-digital">digital</span></div><p class="footer-tagline">Helping Brisbane businesses get found, trusted, and chosen — every single day.</p><div class="footer-socials"><a href="#" aria-label="Facebook">🐦</a><a href="#" aria-label="Instagram">📷</a><a href="#" aria-label="LinkedIn">🔗</a></div></div>
+    <div class="footer-col"><div class="footer-col-title">Services</div><a href="/website.html">Website Design</a><a href="/seo.html">Local SEO</a><a href="/google-ads.html">Google Ads</a><a href="/social-media.html">Social Media</a><a href="/automation.html">Automation & CRM</a></div>
+    <div class="footer-col"><div class="footer-col-title">Company</div><a href="/about.html">About Us</a><a href="/pricing.html">Pricing</a><a href="/get-started.html">Get Started</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy Policy</a></div>
+    <div class="footer-col"><div class="footer-col-title">Brisbane HQ</div><p style="color:rgba(255,255,255,0.45);font-size:14px;line-height:1.8;">Proudly based in<br>Brisbane, Queensland<br>Australia</p><a href="mailto:info@sunstatedigital.com.au" style="color:#FFD700;font-size:14px;margin-top:12px;display:block;">info@sunstatedigital.com.au</a><a href="/get-started.html" style="display:inline-flex;margin-top:20px;background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:12px 24px;border-radius:100px;text-decoration:none;">Book Free Call →</a></div>
+  </div></div>
+  <div class="footer-bottom"><div class="footer-bottom-inner"><div class="footer-copy">© 2026 Sun State Digital Pty Ltd. Proudly Brisbane-based. All rights reserved.</div><div class="footer-badges"><span>⭐ 5-Star Rated</span><span>⚡ 24hr Delivery</span><span>🔒 No Lock-in</span><span>📍 Brisbane Local</span></div></div></div>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);});
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-up').forEach(function(el){io.observe(el);});
+// Trigger fade-up on visible elements immediately
+document.querySelectorAll('.fade-up').forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('vis');});
+</script>
+</body>
+</html>
