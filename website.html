@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Websites from $199 | Sun State Digital Brisbane</title>
+<meta name="description" content="Brisbane businesses deserve a website that works 24/7. Professional websites from $199, live in 24 hours. No lock-in, no hidden fees.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@400;500;600;700&display=swap');
+:root{--black:#000;--surface:#0a0a0a;--card:#111;--border:rgba(255,255,255,0.06);--white:#fff;--muted:rgba(255,255,255,0.45);--gold:#FFD700;--gold-grad:linear-gradient(135deg,#FFD700 0%,#C8920A 60%,#6B4200 100%);--r-lg:28px;--r-xl:40px;--ease:cubic-bezier(0.4,0,0.2,1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(0,0,0,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.nav-logo{font:900 20px/1 'Montserrat',sans-serif;background:linear-gradient(135deg,#FFD700,#C8920A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font:600 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.6);transition:color 0.2s}
+.nav-links a:hover{color:#FFD700}
+.nav-cta{background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:12px 24px;border-radius:100px}
+.sec{padding:130px 6%;position:relative;overflow:hidden}
+.sec-dark{background:var(--black)}
+.sec-surface{background:var(--surface)}
+.wrap{max-width:1320px;margin:0 auto}
+.eye{font:700 10px/1 'Inter',sans-serif;letter-spacing:3.5px;text-transform:uppercase;color:#FFD700;display:inline-flex;align-items:center;gap:12px;margin-bottom:16px}
+.eye::before{content:'';display:block;width:28px;height:1px;background:linear-gradient(135deg,#FFD700,#C8920A)}
+h1{font:900 clamp(48px,5.5vw,88px)/1.0 'Montserrat',sans-serif;letter-spacing:-2.5px;margin-bottom:24px}
+h2{font:900 clamp(36px,4vw,64px)/1.05 'Montserrat',sans-serif;letter-spacing:-1.5px;margin-bottom:24px}
+h3{font:900 22px/1.2 'Montserrat',sans-serif;margin-bottom:12px}
+.gold{background:linear-gradient(135deg,#FFD700,#C8920A,#6B4200);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.muted{color:var(--muted);font-size:17px;line-height:1.8;max-width:600px;margin-bottom:40px}
+.divider{width:48px;height:3px;background:linear-gradient(135deg,#FFD700,#C8920A);border-radius:99px;margin:20px 0 36px}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font:800 12px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:20px 48px;border-radius:100px;transition:all 0.3s}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 20px 60px rgba(255,215,0,0.35)}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;background:transparent;color:#fff;font:700 12px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:18px 40px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.18);transition:all 0.3s}
+.btn-ghost:hover{border-color:rgba(255,215,0,0.5);color:#FFD700;transform:translateY(-3px)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:40px;transition:all 0.4s var(--ease)}
+.card:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(0,0,0,0.5)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.footer{background:#050505;border-top:1px solid rgba(255,255,255,0.06);padding:60px 6%}
+.footer-inner{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-logo{font:900 18px/1 'Montserrat',sans-serif;background:linear-gradient(135deg,#FFD700,#C8920A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font:400 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;transition:color 0.2s}
+.footer-links a:hover{color:#FFD700}
+.footer-copy{font:400 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.25);width:100%;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05)}
+@media(max-width:960px){.nav-links{display:none}.sec{padding:80px 5%}.grid-3,.grid-2{grid-template-columns:1fr}}
+
+/* PAGE-SPECIFIC */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:100px;background:var(--black);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(255,215,0,0.07) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:100px;padding:8px 20px;margin-bottom:28px;font:600 11px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;color:#FFD700}
+.hero-badge span{width:6px;height:6px;background:#FFD700;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feature-item{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px 28px;text-align:center}
+.feature-icon{font-size:36px;margin-bottom:16px}
+.feature-item h3{font-size:16px;margin-bottom:8px}
+.feature-item p{color:var(--muted);font-size:14px;line-height:1.6}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pkg-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:48px 40px;position:relative;transition:all 0.4s var(--ease)}
+.pkg-card:hover{transform:translateY(-8px);box-shadow:0 40px 100px rgba(0,0,0,0.6)}
+.pkg-card.popular{border-color:rgba(255,215,0,0.3);background:linear-gradient(180deg,rgba(255,215,0,0.04) 0%,var(--card) 100%)}
+.pkg-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font:700 10px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border-radius:100px;white-space:nowrap}
+.pkg-price{font:900 64px/1 'Montserrat',sans-serif;letter-spacing:-3px;background:linear-gradient(135deg,#FFD700,#C8920A);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:20px 0 8px}
+.pkg-price span{font-size:20px;letter-spacing:0}
+.pkg-label{color:var(--muted);font-size:13px;margin-bottom:28px}
+.pkg-features{list-style:none;margin-bottom:36px}
+.pkg-features li{padding:10px 0;border-bottom:1px solid var(--border);color:rgba(255,255,255,0.75);font-size:14px;display:flex;align-items:center;gap:10px}
+.pkg-features li::before{content:'âœ“';color:#FFD700;font-weight:700;flex-shrink:0}
+.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;position:relative}
+.step-num{font:900 80px/1 'Montserrat',sans-serif;background:linear-gradient(135deg,rgba(255,215,0,0.15),transparent);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px}
+.faq-list{display:flex;flex-direction:column;gap:16px;max-width:800px;margin:0 auto}
+.faq-item{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 32px}
+.faq-q{font:700 16px/1.4 'Inter',sans-serif;margin-bottom:12px;color:#fff}
+.faq-a{color:var(--muted);font-size:15px;line-height:1.7}
+.cta-sec{background:linear-gradient(135deg,rgba(255,215,0,0.06),transparent);border-top:1px solid rgba(255,215,0,0.1);border-bottom:1px solid rgba(255,215,0,0.1);text-align:center}
+@media(max-width:960px){.features-grid,.pkg-grid,.process-steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">SUN STATE DIGITAL</a>
+  <div class="nav-links">
+    <a href="/website.html">Websites</a>
+    <a href="/seo.html">SEO</a>
+    <a href="/pricing.html">Pricing</a>
+    <a href="/about.html">About</a>
+    <a href="/get-started.html" class="nav-cta">Get Started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-badge"><span></span>Brisbane's Fastest Website Builder</div>
+    <div class="eye">Professional Websites</div>
+    <h1>Your Website Should<br>Be Working For You<br><span class="gold">24/7.</span></h1>
+    <p class="muted">Most Brisbane business websites are losing customers every single day. Slow, outdated, not mobile-friendly â€” yours doesn't have to be. We build professional websites from $199, live in 24 hours.</p>
+    <div class="hero-btns">
+      <a href="/get-started.html" class="btn-gold">Get Your Website â†’</a>
+      <a href="/pricing.html" class="btn-ghost">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="sec sec-surface">
+  <div class="wrap">
+    <div class="eye">Why Choose Us</div>
+    <h2>Built for Brisbane.<br><span class="gold">Built to Convert.</span></h2>
+    <div class="divider"></div>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">âš¡</div>
+        <h3>Lightning Fast</h3>
+        <p>Sub-2-second load times. Google rewards fast sites with higher rankings and more clicks.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">ðŸ“±</div>
+        <h3>Mobile-First</h3>
+        <p>Over 70% of Brisbane searches happen on mobile. Your site looks perfect on every screen.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">ðŸ”</div>
+        <h3>SEO-Ready</h3>
+        <p>Every site ships with on-page SEO baked in â€” meta tags, schema, structured data, the works.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">ðŸš€</div>
+        <h3>Live in 24 Hours</h3>
+        <p>No month-long projects. You're approved, we build, it's live. Fast turnaround, every time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <div class="eye">Website Packages</div>
+    <h2>Simple Packages.<br><span class="gold">Real Results.</span></h2>
+    <div class="divider"></div>
+    <div class="pkg-grid">
+      <!-- Starter -->
+      <div class="pkg-card">
+        <div class="eye">Starter</div>
+        <div class="pkg-price"><span>$</span>199</div>
+        <div class="pkg-label">One-off build fee</div>
+        <ul class="pkg-features">
+          <li>Up to 5 pages</li>
+          <li>Mobile-responsive design</li>
+          <li>Contact form</li>
+          <li>Google Maps embed</li>
+          <li>SEO basics (meta, titles)</li>
+          <li>Google Analytics setup</li>
+          <li>Live in 24 hours</li>
+        </ul>
+        <a href="/get-started.html" class="btn-ghost" style="width:100%;justify-content:center">Get Started â†’</a>
+      </div>
+      <!-- Growth -->
+      <div class="pkg-card popular">
+        <div class="pkg-badge">Most Popular</div>
+        <div class="eye">Growth</div>
+        <div class="pkg-price"><span>$</span>499</div>
+        <div class="pkg-label">One-off build fee</div>
+        <ul class="pkg-features">
+          <li>Up to 10 pages</li>
+          <li>Premium custom design</li>
+          <li>Lead capture forms</li>
+          <li>Blog / news section</li>
+          <li>Full on-page SEO</li>
+          <li>Speed optimisation</li>
+          <li>CRM integration ready</li>
+          <li>Live in 24â€“48 hours</li>
+        </ul>
+        <a href="/get-started.html" class="btn-gold" style="width:100%;justify-content:center">Get Started â†’</a>
+      </div>
+      <!-- Premium -->
+      <div class="pkg-card">
+        <div class="eye">Premium</div>
+        <div class="pkg-price"><span>$</span>999</div>
+        <div class="pkg-label">One-off build fee</div>
+        <ul class="pkg-features">
+          <li>Unlimited pages</li>
+          <li>Bespoke brand design</li>
+          <li>E-commerce ready</li>
+          <li>Booking system integration</li>
+          <li>Advanced SEO setup</li>
+          <li>Copywriting included</li>
+          <li>Priority support</li>
+          <li>Live in 48â€“72 hours</li>
+        </ul>
+        <a href="/get-started.html" class="btn-ghost" style="width:100%;justify-content:center">Get Started â†’</a>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:14px;margin-top:32px">All packages include hosting ($20/month), domain management ($10/month) and ongoing care plan ($49/month) â€” billed separately.</p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec sec-surface">
+  <div class="wrap">
+    <div class="eye">How It Works</div>
+    <h2>From Zero to Live<br><span class="gold">in 3 Simple Steps.</span></h2>
+    <div class="divider"></div>
+    <div class="process-steps">
+      <div>
+        <div class="step-num">01</div>
+        <h3>Tell Us About Your Business</h3>
+        <p style="color:var(--muted);font-size:15px;line-height:1.8">Fill in our quick form â€” business name, services, target customers, colour preferences. Takes 5 minutes.</p>
+      </div>
+      <div>
+        <div class="step-num">02</div>
+        <h3>We Build While You Work</h3>
+        <p style="color:var(--muted);font-size:15px;line-height:1.8">Our team gets straight to it. You run your business, we build your online presence. No endless back-and-forth.</p>
+      </div>
+      <div>
+        <div class="step-num">03</div>
+        <h3>Review, Approve, Go Live</h3>
+        <p style="color:var(--muted);font-size:15px;line-height:1.8">We send you a preview. You request any tweaks. Once you're happy, we flip the switch â€” you're live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <div class="eye">FAQ</div>
+    <h2 style="text-align:center">Common Questions</h2>
+    <div class="divider" style="margin:20px auto 48px"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Do I own my website?</div>
+        <div class="faq-a">Yes â€” 100%. We hand you full ownership of your site, domain, and content. No lock-in, no surprises.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's included in the monthly fees?</div>
+        <div class="faq-a">Hosting ($20/month) keeps your site fast and online. Domain ($10/month) manages your web address. Care Plan ($49/month) covers updates, backups, and support. All optional but recommended.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I update the website myself?</div>
+        <div class="faq-a">Absolutely. Or let us handle it with our Care Plan â€” we make updates within 24 hours for an included fee.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I need more than 5 pages later?</div>
+        <div class="faq-a">Easy â€” you can upgrade at any time. Additional pages are priced per page, or you can move to a higher package.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you work with tradespeople and small businesses?</div>
+        <div class="faq-a">That's our bread and butter. Builders, plumbers, electricians, landscapers, cleaners â€” we know exactly what converts in the Brisbane trades market.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sec cta-sec">
+  <div class="wrap" style="text-align:center">
+    <div class="eye" style="justify-content:center">Ready to Get Started?</div>
+    <h2>Your Brisbane Customers Are<br>Searching Right Now.</h2>
+    <div class="divider" style="margin:20px auto 24px"></div>
+    <p class="muted" style="margin:0 auto 40px">Don't let your competitors take jobs that should be yours. A professional website from $199, live in 24 hours.</p>
+    <a href="/get-started.html" class="btn-gold">Get My Website â€” From $199 â†’</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">SUN STATE DIGITAL</div>
+    <div class="footer-links">
+      <a href="/website.html">Websites</a>
+      <a href="/seo.html">SEO</a>
+      <a href="/google-ads.html">Google Ads</a>
+      <a href="/social-media.html">Social Media</a>
+      <a href="/automation.html">Automation</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+    <div class="footer-copy">Â© 2026 Sun State Digital. Proudly Brisbane-based. ABN pending.</div>
+  </div>
+</footer>
+
+</body>
+</html>
