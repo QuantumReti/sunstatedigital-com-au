@@ -54,11 +54,7 @@ h1{font:900 clamp(44px,5.5vw,88px)/1.0 'Montserrat',sans-serif;letter-spacing:-2
 @keyframes orbFloat1{from{transform:translate(0,0) scale(1)}to{transform:translate(60px,80px) scale(1.15)}}
 @keyframes orbFloat2{from{transform:translate(0,0) scale(1)}to{transform:translate(-40px,-60px) scale(1.1)}}
 @keyframes orbFloat3{from{transform:translate(0,0)}to{transform:translate(30px,-40px)}}
-.glass-panel{position:relative;z-index:2;width:100%;max-width:1100px;margin:0 auto;padding:80px;background:rgba(255,255,255,0.03);backdrop-filter:blur(48px) saturate(160%);-webkit-backdrop-filter:blur(48px) saturate(160%);border:1px solid rgba(255,255,255,0.07);border-radius:32px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),inset 0 -1px 0 rgba(0,0,0,0.2),0 40px 120px rgba(0,0,0,0.6),0 0 0 0.5px rgba(255,255,255,0.04)}
-.glass-panel::before{content:'';position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,0.4),rgba(255,255,255,0.3),rgba(200,146,10,0.4),transparent);border-radius:1px}
-.glass-panel::after{content:'';position:absolute;inset:0;border-radius:32px;background:radial-gradient(ellipse at 30% 0%,rgba(255,215,0,0.04) 0%,transparent 60%);pointer-events:none}
-@media(max-width:1024px){.glass-panel{padding:60px 40px;border-radius:24px;margin:0 20px}}
-@media(max-width:600px){.glass-panel{padding:40px 24px;border-radius:20px;margin:0 12px}.orb-1{width:400px;height:400px}}
+@media(max-width:600px){.orb-1{width:400px;height:400px}}
 .card{background:rgba(255,255,255,0.03);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.07);border-radius:24px;padding:48px;transition:all 0.4s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,0.3),transparent);opacity:0;transition:opacity 0.3s}
 .card:hover{transform:translateY(-6px);background:rgba(255,255,255,0.05);border-color:rgba(255,215,0,0.15);box-shadow:0 32px 80px rgba(0,0,0,0.5),0 0 0 0.5px rgba(255,215,0,0.08)}
@@ -82,14 +78,11 @@ h1{font:900 clamp(44px,5.5vw,88px)/1.0 'Montserrat',sans-serif;letter-spacing:-2
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
-  <div class="glass-panel">
-
-  <div class="wrap" style="width:100%">
+  <div class="wrap" style="position:relative;z-index:2;padding:160px 6% 120px;">
     <div class="eye" style="justify-content:center">Transparent Pricing</div>
     <h1>No Lock-in. No Surprises.<br><span class="gold">Just Results.</span></h1>
     <p class="muted" style="margin:0 auto 32px">Every service priced clearly. You choose what you need, when you need it. No bundled packages you didn't ask for, no hidden fees buried in the small print.</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap"><a href="/get-started.html" class="btn-gold">Get Started →</a><a href="/contact.html" class="btn-ghost">Book a Free Call</a></div>
-  </div>
   </div>
 </section>
 
@@ -242,4 +235,5 @@ if (track2) { const html = t2.map(buildTestimonialCard).join(''); track2.innerHT
 
 </body>
 </html>
+
 
