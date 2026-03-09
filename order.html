@@ -835,18 +835,22 @@ updateTotals();
     <div class="mason-avatar">&#129302;</div>
     <div class="mason-header-info">
       <div class="mason-header-name">Mason</div>
-      <div class="mason-header-sub">Josh's assistant &middot; Usually replies instantly</div>
+      <div class="mason-header-sub">Lives &amp; breathes digital marketing 🔥 · 🟢 Online</div>
     </div>
     <button class="mason-close" onclick="toggleMason()">&#10005;</button>
   </div>
   <div id="masonMessages">
     <div class="mason-msg-wrap">
-      <div class="mason-msg">Hey! &#128075; I'm Mason, Josh's assistant here at Sun State Digital.<br><br>Before I help &mdash; what's your name?</div>
+      <div class="mason-msg">
+  Hi! 👋 I’m Mason — welcome to Sun State Digital!<br><br>
+  Better marketing means more sales, and that’s literally what I live for 😄<br><br>
+  How can I help you today?
+</div>
       <div class="mason-msg-time">Mason &middot; Just now</div>
     </div>
   </div>
   <div class="mason-input-row">
-    <input id="masonInput" type="text" placeholder="Type your name..." onkeydown="if(event.key==='Enter')msnSend()" autocomplete="off">
+    <input id="masonInput" type="text" placeholder="Type a message..." onkeydown="if(event.key==='Enter')msnSend()" autocomplete="off">
     <button id="masonSendBtn" onclick="msnSend()">&#10148;</button>
   </div>
 </div>
@@ -856,10 +860,11 @@ updateTotals();
 var msnName='',msnStep=0,msnOpen=false;
 function toggleMason(){msnOpen=!msnOpen;var p=document.getElementById('masonPanel');if(msnOpen){p.classList.add('open');setTimeout(function(){document.getElementById('masonInput').focus()},350)}else{p.classList.remove('open')}}
 function msnSend(){var i=document.getElementById('masonInput'),t=i.value.trim();if(!t)return;i.value='';addUMsg(t);
-if(msnStep===0){msnName=t.split(' ')[0];msnStep=1;document.getElementById('masonInput').placeholder='Tell me about your business...';msnDelay(function(){addMMsg('Nice to meet you, '+msnName+'! \ud83d\ude0a');msnDelay(function(){addMMsg("What's going on with your business right now? Are you looking to get more customers online, or something else?")},600)},400)}
-else if(msnStep===1){msnStep=2;var r=msnCtx(t);msnDelay(function(){addMMsg(r)},500)}
-else if(msnStep===2){msnStep=3;var h=msnHook(t);msnDelay(function(){addMMsg(h);msnDelay(function(){addMMsg("Here\u2019s what I\u2019d suggest \u2014 a quick 15-min call with Josh. He\u2019ll look at your situation, tell you exactly what to do, zero pressure. Want me to sort that? \ud83d\udcc5")},1200)},600)}
-else{var lc=t.toLowerCase();if(/yes|yeah|sure|ok|book|call|love|great|sounds/.test(lc)){msnDelay(function(){addMMsg('Perfect! \ud83d\ude4c Jumping to WhatsApp to send the booking link \u2014 easier over there. See you in a sec!');setTimeout(function(){window.open('https://wa.me/61404755888?text='+encodeURIComponent('Hi Mason! I just chatted on the Sun State Digital website. My name is '+msnName+'.'),'_blank')},1000)},500)}else{msnDelay(function(){addMMsg("Of course! What else do you want to know? I\u2019m not going anywhere \ud83d\ude0a")},400)}}}
+if(msnStep===0){msnStep=1;msnDelay(function(){addMMsg("Love it! 😊 What's your name?");document.getElementById('masonInput').placeholder='Your name...';},500);}
+else if(msnStep===1){msnName=t.split(' ')[0];msnStep=2;msnDelay(function(){addMMsg('Nice to meet you, '+msnName+'! 🤜');msnDelay(function(){addMMsg("So what's going on with your business right now? Are you looking to get more customers online?");},600);},400);}
+else if(msnStep===2){msnStep=3;var r=msnCtx(t);msnDelay(function(){addMMsg(r)},500);}
+else if(msnStep===3){msnStep=4;var h=msnHook(t);msnDelay(function(){addMMsg(h);msnDelay(function(){addMMsg("Here’s what I’d suggest — a quick 15-min call with Josh. He’ll look at your situation, tell you exactly what to do, zero pressure. Want me to sort that? 📅");},1200);},600);}
+else{var lc=t.toLowerCase();if(/yes|yeah|sure|ok|book|call|love|great|sounds/.test(lc)){msnDelay(function(){addMMsg('Perfect! 🙌 Jumping to WhatsApp to send the booking link — easier over there. See you in a sec!');setTimeout(function(){window.open('https://wa.me/61404755888?text='+encodeURIComponent('Hi Mason! I just chatted on the Sun State Digital website. My name is '+msnName+'.'),'_blank');},1000);},500);}else{msnDelay(function(){addMMsg("Of course! What else do you want to know? I'm not going anywhere 😊")},400);}}}
 function msnDelay(fn,ms){setTimeout(fn,ms||500)}
 function msnCtx(t){t=t.toLowerCase();if(/website|site\b|web/.test(t))return'Got it \u2014 do you have a site already, or starting from scratch?';if(/seo|google|rank|found|search/.test(t))return'Ahh, the Google problem \ud83d\ude05 Are people finding you online right now, or basically invisible?';if(/ads|facebook|instagram|social/.test(t))return'Nice \u2014 running ads already, or just exploring the idea?';if(/leads|customers|jobs|clients|enquir/.test(t))return'Love it \u2014 where are most of your leads coming from right now?';if(/price|cost|how much|afford/.test(t))return'Honestly our stuff is way more affordable than most expect. What service were you thinking about?';if(/help|not sure|lost|unsure/.test(t))return"No worries \u2014 that\u2019s what I\u2019m here for. What do you do for work?";return'Interesting \u2014 what does your online presence look like right now?'}
 function msnHook(t){t=t.toLowerCase();if(/no site|no website|nothing|invisible|not found/.test(t))return"If you\u2019re not on Google, your competitors are taking those jobs right now. Most businesses lose 5-10 enquiries a week without knowing it.";if(/old|bad site|not working|outdated|slow/.test(t))return"A site that doesn\u2019t convert is worse than none \u2014 it kills trust before you even speak to them. Good news: we fix that fast.";if(/referral|word of mouth|mates|friends/.test(t))return"Referrals are gold \u2014 but what happens when they Google you and the site doesn\u2019t back it up?";return"You\u2019re ahead of most owners just by looking into this. The ones who wait end up scrambling."}
