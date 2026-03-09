@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Your Package | Sun State Digital Brisbane</title>
+<meta name="description" content="Pick exactly what your business needs. No bundles, no lock-in — just the services that make sense for you right now.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@400;500;600;700&display=swap');
+:root{--black:#000;--surface:#0a0a0a;--card:#111;--card-hover:#161616;--border:rgba(255,255,255,0.06);--white:#fff;--muted:rgba(255,255,255,0.45);--gold:#FFD700;--gold-mid:#C8920A;--gold-dark:#6B4200;--gold-grad:linear-gradient(135deg,#FFD700 0%,#C8920A 60%,#6B4200 100%);--r:16px;--r-lg:28px;--ease:cubic-bezier(0.4,0,0.2,1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;line-height:1.6;padding-bottom:100px}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;transition:all 0.3s var(--ease)}
+.nav.scrolled{background:rgba(0,0,0,0.95);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,215,0,0.08);box-shadow:0 4px 40px rgba(0,0,0,0.4)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:22px 6%;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.nav-logo{display:flex;align-items:baseline;gap:3px;text-decoration:none}
+.logo-sun{font:900 26px/1 'Montserrat',sans-serif;background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:3px}
+.logo-state{font:900 26px/1 'Montserrat',sans-serif;color:var(--white);letter-spacing:3px}
+.logo-digital{font:400 16px/1 'Inter',sans-serif;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-left:4px}
+.nav-links{display:flex;align-items:center;gap:4px;flex-wrap:nowrap}
+.nav-links a{font:500 12px/1 'Inter',sans-serif;letter-spacing:0.5px;color:rgba(255,255,255,0.55);padding:8px 14px;border-radius:100px;transition:all 0.2s var(--ease);white-space:nowrap}
+.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}
+.nav-cta{background:var(--gold-grad) !important;color:#000 !important;font:700 11px/1 'Inter',sans-serif !important;letter-spacing:1.5px !important;text-transform:uppercase;padding:12px 22px !important;border-radius:100px !important;transition:all 0.3s !important}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,215,0,0.35) !important}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s}
+/* LAYOUT */
+.sec{padding:160px 7% 120px;position:relative;overflow:hidden}
+.sec-alt{background:var(--surface)}
+.wrap{max-width:1120px;margin:0 auto;position:relative;z-index:1}
+.eye{font:700 10px/1 'Inter',sans-serif;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:12px;margin-bottom:20px}
+.eye::before{content:'';display:block;width:28px;height:1px;background:var(--gold-grad);flex-shrink:0}
+h1{font:900 clamp(40px,5vw,80px)/1.0 'Montserrat',sans-serif;letter-spacing:-2px;margin-bottom:24px}
+h2{font:900 clamp(28px,3.5vw,54px)/1.05 'Montserrat',sans-serif;letter-spacing:-1.5px;margin-bottom:32px}
+.gold{background:var(--gold-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.lead{color:var(--muted);font-size:18px;line-height:1.8;max-width:600px;margin-bottom:56px;letter-spacing:-0.5px}
+.divider{width:48px;height:3px;background:var(--gold-grad);border-radius:99px;margin:20px 0 40px}
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.7s var(--ease),transform 0.7s var(--ease)}
+.fade-up.vis{opacity:1;transform:translateY(0)}
+.fade-up.d1{transition-delay:0.1s}.fade-up.d2{transition-delay:0.2s}.fade-up.d3{transition-delay:0.3s}
+/* BUNDLE CARDS */
+.bundle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:64px}
+.bundle-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;transition:all 0.3s var(--ease);cursor:pointer;position:relative;overflow:hidden}
+.bundle-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold-grad);opacity:0;transition:opacity 0.3s}
+.bundle-card:hover{border-color:rgba(255,215,0,0.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.bundle-card:hover::before{opacity:1}
+.bundle-name{font:700 14px/1 'Inter',sans-serif;letter-spacing:0.5px;color:var(--white);margin-bottom:8px}
+.bundle-desc{font:400 13px/1.5 'Inter',sans-serif;color:var(--muted);margin-bottom:16px}
+.bundle-price{display:flex;flex-direction:column;gap:4px;margin-bottom:20px}
+.bundle-today{font:700 20px/1 'Montserrat',sans-serif;color:var(--gold)}
+.bundle-monthly{font:400 13px/1 'Inter',sans-serif;color:var(--muted)}
+.bundle-btn{display:inline-flex;align-items:center;gap:8px;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:#000;background:var(--gold-grad);padding:10px 20px;border-radius:100px;transition:all 0.2s;border:none;cursor:pointer;width:100%;justify-content:center}
+.bundle-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,215,0,0.3)}
+/* SERVICES SECTION */
+.services-block{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:32px}
+.services-block-header{padding:28px 32px 20px;border-bottom:1px solid var(--border)}
+.services-block-title{font:900 18px/1 'Montserrat',sans-serif;color:var(--white);margin-bottom:4px}
+.services-block-sub{font:400 13px/1 'Inter',sans-serif;color:var(--muted)}
+.toggle-row{display:flex;align-items:center;gap:20px;padding:20px 32px;border-bottom:1px solid var(--border);cursor:pointer;transition:background 0.2s;user-select:none}
+.toggle-row:last-child{border-bottom:none}
+.toggle-row:hover{background:rgba(255,255,255,0.02)}
+.toggle-row.selected{background:rgba(255,215,0,0.04)}
+/* Custom toggle switch */
+.toggle-switch{position:relative;width:44px;height:24px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
+.toggle-track{position:absolute;inset:0;background:rgba(255,255,255,0.1);border-radius:24px;transition:background 0.2s;border:1px solid rgba(255,255,255,0.08)}
+.toggle-thumb{position:absolute;left:3px;top:3px;width:16px;height:16px;background:#666;border-radius:50%;transition:all 0.2s}
+.toggle-switch input:checked~.toggle-track{background:linear-gradient(135deg,#FFD700,#C8920A);border-color:transparent}
+.toggle-switch input:checked~.toggle-track .toggle-thumb{left:23px;background:#000}
+.toggle-info{flex:1}
+.toggle-name{font:700 15px/1 'Inter',sans-serif;color:var(--white);margin-bottom:3px}
+.toggle-desc{font:400 12px/1 'Inter',sans-serif;color:var(--muted)}
+.toggle-price{font:700 16px/1 'Montserrat',sans-serif;color:var(--white);white-space:nowrap}
+.toggle-price span{font:400 12px/1 'Inter',sans-serif;color:var(--muted)}
+/* AI JETPACK SECTION */
+.jetpack-section{margin-top:48px;margin-bottom:32px}
+.jetpack-header{text-align:center;padding:48px 32px 40px;background:linear-gradient(135deg,rgba(255,215,0,0.06) 0%,rgba(0,0,0,0) 60%);border:1px solid rgba(255,215,0,0.15);border-radius:var(--r-lg) var(--r-lg) 0 0;position:relative;overflow:hidden}
+.jetpack-header::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold-grad)}
+.jetpack-header-icon{font-size:48px;margin-bottom:16px}
+.jetpack-header h3{font:900 clamp(22px,3vw,36px)/1.1 'Montserrat',sans-serif;color:var(--white);margin-bottom:12px}
+.jetpack-header p{font:400 16px/1.7 'Inter',sans-serif;color:var(--muted);max-width:600px;margin:0 auto}
+.jetpack-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid rgba(255,215,0,0.15);border-top:none;border-radius:0 0 var(--r-lg) var(--r-lg);overflow:hidden}
+.jetpack-card{padding:40px 32px;background:var(--card);position:relative;cursor:pointer;transition:all 0.3s var(--ease);border-right:1px solid rgba(255,215,0,0.1)}
+.jetpack-card:last-child{border-right:none}
+.jetpack-card:hover{background:var(--card-hover)}
+.jetpack-card.active{background:rgba(255,215,0,0.05);box-shadow:inset 0 0 0 2px rgba(255,215,0,0.3)}
+.jetpack-card input[type=radio]{display:none}
+.jetpack-popular-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold-grad);color:#000;font:700 10px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:0 0 10px 10px}
+.jetpack-tier{font:700 11px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.jetpack-price-setup{font:900 32px/1 'Montserrat',sans-serif;color:var(--gold);margin-bottom:4px}
+.jetpack-price-monthly{font:400 14px/1 'Inter',sans-serif;color:var(--muted);margin-bottom:20px}
+.jetpack-features{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
+.jetpack-features li{font:400 13px/1.4 'Inter',sans-serif;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px}
+.jetpack-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
+.jetpack-select-btn{width:100%;padding:14px 20px;border-radius:100px;font:700 12px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;border:1.5px solid rgba(255,215,0,0.3);background:transparent;color:var(--gold)}
+.jetpack-card.active .jetpack-select-btn{background:var(--gold-grad);color:#000;border-color:transparent}
+.jetpack-select-btn:hover{background:rgba(255,215,0,0.1)}
+.jetpack-card.active .jetpack-select-btn:hover{background:var(--gold-grad);opacity:0.9}
+.jetpack-note{background:rgba(255,215,0,0.04);border:1px solid rgba(255,215,0,0.1);border-top:none;border-radius:0 0 var(--r-lg) var(--r-lg);padding:20px 32px;font:400 13px/1.6 'Inter',sans-serif;color:var(--muted)}
+/* STICKY TOTAL BAR */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,215,0,0.15);padding:16px 6%;box-shadow:0 -8px 40px rgba(0,0,0,0.6)}
+.sticky-bar-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.sticky-totals{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+.sticky-total-item{display:flex;flex-direction:column;gap:2px}
+.sticky-total-label{font:400 10px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.sticky-total-value{font:900 20px/1 'Montserrat',sans-serif;color:var(--white)}
+.sticky-total-value.has-value{color:var(--gold)}
+.sticky-divider{width:1px;height:36px;background:var(--border)}
+.sticky-mixed-note{font:400 12px/1.4 'Inter',sans-serif;color:rgba(255,215,0,0.6);max-width:300px}
+.checkout-btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold-grad);color:#000;font:800 13px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:18px 40px;border-radius:100px;border:none;cursor:pointer;transition:all 0.3s var(--ease);white-space:nowrap;flex-shrink:0}
+.checkout-btn:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(255,215,0,0.3)}
+.checkout-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+/* FOOTER */
+.footer{background:#040404;border-top:1px solid var(--border)}
+.footer-top{padding:80px 6%}
+.footer-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:60px}
+.footer-logo{display:flex;align-items:baseline;gap:3px;margin-bottom:16px}
+.footer-logo .logo-sun,.footer-logo .logo-state{font-size:22px}
+.footer-tagline{font:400 15px/1.7 'Inter',sans-serif;color:rgba(255,255,255,0.4);max-width:260px;margin-bottom:28px}
+.footer-socials{display:flex;gap:12px}
+.footer-socials a{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,0.05);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s;text-decoration:none}
+.footer-socials a:hover{background:rgba(255,215,0,0.1);border-color:rgba(255,215,0,0.3)}
+.footer-col-title{font:700 10px/1 'Inter',sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:20px}
+.footer-col a{display:block;font:400 14px/1 'Inter',sans-serif;color:rgba(255,255,255,0.5);margin-bottom:12px;transition:color 0.2s;text-decoration:none}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.04);padding:24px 6%}
+.footer-bottom-inner{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font:400 12px/1 'Inter',sans-serif;color:rgba(255,255,255,0.2)}
+.footer-badges{display:flex;gap:20px;flex-wrap:wrap}
+.footer-badges span{font:500 11px/1 'Inter',sans-serif;color:rgba(255,255,255,0.3);letter-spacing:0.5px}
+@media(max-width:1024px){
+  .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.97);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:190}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:20px !important;padding:12px 24px !important}
+  .nav-hamburger{display:flex;z-index:210}
+  .footer-inner{grid-template-columns:1fr 1fr !important}
+  .bundle-grid,.jetpack-cards{grid-template-columns:1fr !important}
+  .jetpack-card{border-right:none;border-bottom:1px solid rgba(255,215,0,0.1)}
+  .jetpack-card:last-child{border-bottom:none}
+}
+@media(max-width:700px){
+  .footer-inner{grid-template-columns:1fr !important}
+  .sticky-bar-inner{flex-direction:column;align-items:stretch}
+  .checkout-btn{width:100%;justify-content:center}
+  .sec{padding:100px 5% 80px}
+}
+</style>
+</head>
+<body style="padding-top:80px">
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-logo">
+      <span class="logo-sun">SUN</span><span class="logo-state">STATE</span><span class="logo-digital">digital</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="/website.html">Websites</a>
+      <a href="/seo.html">SEO</a>
+      <a href="/google-ads.html">Google Ads</a>
+      <a href="/social-media.html">Social</a>
+      <a href="/automation.html">Automation</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/get-started.html" class="nav-cta">Get Started →</a>
+    </div>
+    <button class="nav-hamburger" id="navHamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="sec" style="padding-bottom:40px;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(255,215,0,0.06) 0%,transparent 60%)">
+  <div class="wrap" style="text-align:center;max-width:800px">
+    <div class="eye fade-up" style="justify-content:center">Start Today</div>
+    <h1 class="fade-up d1">Build Your <span class="gold">Package</span></h1>
+    <p class="lead fade-up d2" style="margin:0 auto 56px;text-align:center">Pick exactly what your business needs. No bundles, no lock-in — just the services that make sense for you right now.</p>
+  </div>
+</section>
+
+<!-- POPULAR BUNDLES -->
+<section class="sec" style="padding-top:40px;padding-bottom:40px">
+  <div class="wrap">
+    <div class="eye fade-up">Quick Start</div>
+    <h2 class="fade-up d1" style="margin-bottom:12px">Popular <span class="gold">Bundles</span></h2>
+    <p style="color:var(--muted);font-size:15px;margin-bottom:36px;font-family:'Inter',sans-serif" class="fade-up d2">Click a bundle to pre-select the right services — then customise from there.</p>
+    <div class="bundle-grid fade-up d2">
+      <div class="bundle-card" onclick="selectBundle('found')">
+        <div class="bundle-name">🔍 Get Found Online</div>
+        <div class="bundle-desc">Website + Hosting + SEO. The essential starter pack for any Brisbane business.</div>
+        <div class="bundle-price">
+          <div class="bundle-today">$199 today</div>
+          <div class="bundle-monthly">+ $119/month</div>
+        </div>
+        <button class="bundle-btn">Select Bundle →</button>
+      </div>
+      <div class="bundle-card" style="border-color:rgba(255,215,0,0.15);background:linear-gradient(180deg,rgba(255,215,0,0.04) 0%,var(--card) 100%)" onclick="selectBundle('presence')">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold-grad);color:#000;font:700 9px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:0 0 10px 10px">⭐ Most Popular</div>
+        <div class="bundle-name" style="margin-top:16px">🌐 Full Digital Presence</div>
+        <div class="bundle-desc">Website + Setup + Hosting + SEO + Social. Everything to look legit and get found.</div>
+        <div class="bundle-price">
+          <div class="bundle-today">$248 today</div>
+          <div class="bundle-monthly">+ $218/month</div>
+        </div>
+        <button class="bundle-btn">Select Bundle →</button>
+      </div>
+      <div class="bundle-card" onclick="selectBundle('growth')">
+        <div class="bundle-name">🚀 Total Growth Engine</div>
+        <div class="bundle-desc">Full presence + Google Ads. Maximum reach, maximum enquiries. Built to scale.</div>
+        <div class="bundle-price">
+          <div class="bundle-today">$248 today</div>
+          <div class="bundle-monthly">+ $617/month</div>
+        </div>
+        <button class="bundle-btn">Select Bundle →</button>
+      </div>
+    </div>
+
+    <!-- ONE-OFF SERVICES -->
+    <div class="services-block fade-up">
+      <div class="services-block-header">
+        <div class="services-block-title">One-Off Payments</div>
+        <div class="services-block-sub">Pay once. No recurring charge.</div>
+      </div>
+      <label class="toggle-row" id="row-website" onclick="toggleRow('website')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-website" data-price-id="price_1T8WDrHVpACKt37psbpjdPad" data-amount="199" data-interval="once">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">Website Build</div>
+          <div class="toggle-desc">Get online in 24 hours — custom, mobile-first, SEO-ready</div>
+        </div>
+        <div class="toggle-price">$199</div>
+      </label>
+      <label class="toggle-row" id="row-setup" onclick="toggleRow('setup')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-setup" data-price-id="price_1T8WENHVpACKt37pjAbiWWW3" data-amount="49" data-interval="once">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">Setup & Configuration</div>
+          <div class="toggle-desc">Domain connection, email setup, Google Analytics & CRM integration</div>
+        </div>
+        <div class="toggle-price">$49</div>
+      </label>
+      <label class="toggle-row" id="row-crm-onboard" onclick="toggleRow('crm-onboard')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-crm-onboard" data-price-id="price_1T8WVkHVpACKt37pHJW5n3DI" data-amount="99" data-interval="once">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">CRM Onboarding</div>
+          <div class="toggle-desc">Full GHL setup, pipeline configuration & personalised training session</div>
+        </div>
+        <div class="toggle-price">$99</div>
+      </label>
+    </div>
+
+    <!-- MONTHLY SERVICES -->
+    <div class="services-block fade-up d1">
+      <div class="services-block-header">
+        <div class="services-block-title">Monthly Services</div>
+        <div class="services-block-sub">Cancel any time. No lock-in contracts.</div>
+      </div>
+      <label class="toggle-row" id="row-hosting" onclick="toggleRow('hosting')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-hosting" data-price-id="price_1T8WEtHVpACKt37pES82sfmu" data-amount="20" data-interval="month">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">Website Hosting</div>
+          <div class="toggle-desc">Fast, secure, managed hosting — 99.9% uptime guarantee</div>
+        </div>
+        <div class="toggle-price">$20<span>/mo</span></div>
+      </label>
+      <label class="toggle-row" id="row-domain" onclick="toggleRow('domain')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-domain" data-price-id="price_1T8WFNHVpACKt37peX0A2Tlq" data-amount="10" data-interval="month">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">Domain Name</div>
+          <div class="toggle-desc">.com.au registration, DNS management & annual renewal</div>
+        </div>
+        <div class="toggle-price">$10<span>/mo</span></div>
+      </label>
+      <label class="toggle-row" id="row-care" onclick="toggleRow('care')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-care" data-price-id="price_1T8WWDHVpACKt37p5KYwmqlJ" data-amount="49" data-interval="month">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">Care Plan</div>
+          <div class="toggle-desc">Content updates, security backups & priority support within 24hr</div>
+        </div>
+        <div class="toggle-price">$49<span>/mo</span></div>
+      </label>
+      <label class="toggle-row" id="row-seo" onclick="toggleRow('seo')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-seo" data-price-id="price_1T8WWnHVpACKt37pW0z279Tt" data-amount="99" data-interval="month">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">SEO + Google Profile</div>
+          <div class="toggle-desc">Rank higher, get found — local SEO + Google Business Profile management</div>
+        </div>
+        <div class="toggle-price">$99<span>/mo</span></div>
+      </label>
+      <label class="toggle-row" id="row-crm" onclick="toggleRow('crm')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-crm" data-price-id="price_1T8WXFHVpACKt37puRv38rCJ" data-amount="99" data-interval="month">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">CRM & Automation</div>
+          <div class="toggle-desc">Lead pipelines, automated follow-ups & GHL CRM management</div>
+        </div>
+        <div class="toggle-price">$99<span>/mo</span></div>
+      </label>
+      <label class="toggle-row" id="row-social" onclick="toggleRow('social')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-social" data-price-id="price_1T8WXpHVpACKt37ptagRoWEj" data-amount="99" data-interval="month">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">Social Media Management</div>
+          <div class="toggle-desc">Regular posts, stories & engagement across Facebook + Instagram</div>
+        </div>
+        <div class="toggle-price">$99<span>/mo</span></div>
+      </label>
+      <label class="toggle-row" id="row-email" onclick="toggleRow('email')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-email" data-price-id="price_1T8WYJHVpACKt37pGXP0oHII" data-amount="29" data-interval="month">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">Email Marketing</div>
+          <div class="toggle-desc">Monthly campaigns + automated nurture sequences for your list</div>
+        </div>
+        <div class="toggle-price">$29<span>/mo</span></div>
+      </label>
+      <label class="toggle-row" id="row-google-ads" onclick="toggleRow('google-ads')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-google-ads" data-price-id="price_1T8WYkHVpACKt37pfP1hP5i5" data-amount="399" data-interval="month">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">Google Ads Management</div>
+          <div class="toggle-desc">Paid search campaigns — setup, optimisation & monthly reporting</div>
+        </div>
+        <div class="toggle-price">$399<span>/mo</span></div>
+      </label>
+      <label class="toggle-row" id="row-meta-ads" onclick="toggleRow('meta-ads')">
+        <div class="toggle-switch">
+          <input type="checkbox" id="toggle-meta-ads" data-price-id="price_1T8WZAHVpACKt37pVa6Mx1W4" data-amount="399" data-interval="month">
+          <div class="toggle-track"><div class="toggle-thumb"></div></div>
+        </div>
+        <div class="toggle-info">
+          <div class="toggle-name">Facebook & Instagram Ads</div>
+          <div class="toggle-desc">Meta ads + targeting, creative, A/B testing & lead gen campaigns</div>
+        </div>
+        <div class="toggle-price">$399<span>/mo</span></div>
+      </label>
+    </div>
+
+    <!-- AI JETPACK SECTION -->
+    <div class="jetpack-section fade-up d2" id="jetpack-section">
+      <div class="jetpack-header">
+        <div class="jetpack-header-icon">🚀</div>
+        <h3>AI Jetpack — Done-For-You AI Business System</h3>
+        <p>A fully managed AI operation built into your business. Leads, follow-ups, content, CRM, social — all running on autopilot.</p>
+      </div>
+      <div class="jetpack-cards">
+
+        <!-- LITE -->
+        <div class="jetpack-card" id="jetpack-lite" onclick="selectJetpack('lite')">
+          <div class="jetpack-tier">Lite</div>
+          <div class="jetpack-price-setup">$1,500 <span style="font:400 14px/1 'Inter',sans-serif;color:var(--muted)">setup</span></div>
+          <div class="jetpack-price-monthly">+ $2,000/month</div>
+          <ul class="jetpack-features">
+            <li>2 users included</li>
+            <li>AI lead follow-up</li>
+            <li>CRM automation</li>
+            <li>Monthly reporting</li>
+          </ul>
+          <button class="jetpack-select-btn" id="jetpack-lite-btn">Select Plan</button>
+          <input type="radio" name="jetpack" id="jetpack-radio-lite"
+            data-setup-price-id="price_1T91jlHVpACKt37p05vTQ3vI"
+            data-monthly-price-id="price_1T91jmHVpACKt37pQ36ViL9H"
+            data-setup-amount="1500"
+            data-monthly-amount="2000">
+        </div>
+
+        <!-- PRO -->
+        <div class="jetpack-card" id="jetpack-pro" onclick="selectJetpack('pro')" style="position:relative;padding-top:52px">
+          <div class="jetpack-popular-badge">⭐ Most Popular</div>
+          <div class="jetpack-tier">Pro</div>
+          <div class="jetpack-price-setup">$3,000 <span style="font:400 14px/1 'Inter',sans-serif;color:var(--muted)">setup</span></div>
+          <div class="jetpack-price-monthly">+ $6,000/month</div>
+          <ul class="jetpack-features">
+            <li>3 users included</li>
+            <li>Everything in Lite</li>
+            <li>AI content creation</li>
+            <li>Social media automation</li>
+            <li>Priority support</li>
+          </ul>
+          <button class="jetpack-select-btn" id="jetpack-pro-btn">Select Plan</button>
+          <input type="radio" name="jetpack" id="jetpack-radio-pro"
+            data-setup-price-id="price_1T91jnHVpACKt37pg3YqJL2M"
+            data-monthly-price-id="price_1T91joHVpACKt37pjLGVKh5L"
+            data-setup-amount="3000"
+            data-monthly-amount="6000">
+        </div>
+
+        <!-- ENTERPRISE -->
+        <div class="jetpack-card" id="jetpack-enterprise" onclick="selectJetpack('enterprise')">
+          <div class="jetpack-tier">Enterprise</div>
+          <div class="jetpack-price-setup">$6,000 <span style="font:400 14px/1 'Inter',sans-serif;color:var(--muted)">setup</span></div>
+          <div class="jetpack-price-monthly">+ $12,000/month</div>
+          <ul class="jetpack-features">
+            <li>4 users included</li>
+            <li>Everything in Pro</li>
+            <li>Custom AI workflows</li>
+            <li>Dedicated account manager</li>
+            <li>White-glove onboarding</li>
+          </ul>
+          <button class="jetpack-select-btn" id="jetpack-enterprise-btn">Select Plan</button>
+          <input type="radio" name="jetpack" id="jetpack-radio-enterprise"
+            data-setup-price-id="price_1T91jqHVpACKt37p7EzCAmrf"
+            data-monthly-price-id="price_1T91jqHVpACKt37pQMwvYD8a"
+            data-setup-amount="6000"
+            data-monthly-amount="12000">
+        </div>
+      </div>
+      <div class="jetpack-note">
+        <strong style="color:rgba(255,255,255,0.6)">*AI Jetpack is a licensed product.</strong> Setup includes full onboarding, configuration, and training. No lock-in after month 3. Includes setup fee + first month — you'll complete two quick checkouts (one for setup, one for your monthly licence).
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STICKY TOTAL BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-inner">
+    <div class="sticky-totals">
+      <div class="sticky-total-item">
+        <div class="sticky-total-label">Today</div>
+        <div class="sticky-total-value" id="totalToday">$0</div>
+      </div>
+      <div class="sticky-divider"></div>
+      <div class="sticky-total-item">
+        <div class="sticky-total-label">Monthly</div>
+        <div class="sticky-total-value" id="totalMonthly">$0/mo</div>
+      </div>
+      <div class="sticky-mixed-note" id="mixedNote" style="display:none">
+        ℹ️ Mixed cart — you'll complete two quick checkouts: one for setup fees, one for your monthly plan.
+      </div>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" onclick="proceedToCheckout()">
+      Proceed to Checkout →
+    </button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo"><span class="logo-sun">SUN</span><span class="logo-state">STATE</span><span class="logo-digital">digital</span></div>
+        <p class="footer-tagline">Helping Brisbane businesses get found, trusted, and chosen — every single day.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Services</div>
+        <a href="/website.html">Website Design</a>
+        <a href="/seo.html">Local SEO</a>
+        <a href="/google-ads.html">Google Ads</a>
+        <a href="/social-media.html">Social Media</a>
+        <a href="/automation.html">Automation & CRM</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <a href="/about.html">About Us</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/get-started.html">Get Started</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Brisbane HQ</div>
+        <p style="color:rgba(255,255,255,0.45);font-size:14px;line-height:1.8">Proudly based in<br>Brisbane, Queensland<br>Australia</p>
+        <a href="mailto:info@sunstatedigital.com.au" style="color:#FFD700;font-size:14px;margin-top:12px;display:block">info@sunstatedigital.com.au</a>
+        <a href="/get-started.html" style="display:inline-flex;margin-top:20px;background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:12px 24px;border-radius:100px;text-decoration:none">Book Free Call →</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <div class="footer-copy">© 2026 Sun State Digital Pty Ltd. Proudly Brisbane-based. All rights reserved.</div>
+      <div class="footer-badges">
+        <span>⭐ 5-Star Rated</span>
+        <span>⚡ 24hr Delivery</span>
+        <span>🔓 No Lock-in</span>
+        <span>🇦🇺 Brisbane Local</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── STATE ─────────────────────────────────────────────
+var selectedJetpack = null; // 'lite' | 'pro' | 'enterprise' | null
+
+// Stripe price metadata (used for cart logic)
+var PRICES = {
+  'website':      { id: 'price_1T8WDrHVpACKt37psbpjdPad',  amount: 199,   interval: 'once' },
+  'setup':        { id: 'price_1T8WENHVpACKt37pjAbiWWW3',  amount: 49,    interval: 'once' },
+  'crm-onboard':  { id: 'price_1T8WVkHVpACKt37pHJW5n3DI',  amount: 99,    interval: 'once' },
+  'hosting':      { id: 'price_1T8WEtHVpACKt37pES82sfmu',  amount: 20,    interval: 'month' },
+  'domain':       { id: 'price_1T8WFNHVpACKt37peX0A2Tlq',  amount: 10,    interval: 'month' },
+  'care':         { id: 'price_1T8WWDHVpACKt37p5KYwmqlJ',  amount: 49,    interval: 'month' },
+  'seo':          { id: 'price_1T8WWnHVpACKt37pW0z279Tt',  amount: 99,    interval: 'month' },
+  'crm':          { id: 'price_1T8WXFHVpACKt37puRv38rCJ',  amount: 99,    interval: 'month' },
+  'social':       { id: 'price_1T8WXpHVpACKt37ptagRoWEj',  amount: 99,    interval: 'month' },
+  'email':        { id: 'price_1T8WYJHVpACKt37pGXP0oHII',  amount: 29,    interval: 'month' },
+  'google-ads':   { id: 'price_1T8WYkHVpACKt37pfP1hP5i5',  amount: 399,   interval: 'month' },
+  'meta-ads':     { id: 'price_1T8WZAHVpACKt37pVa6Mx1W4',  amount: 399,   interval: 'month' }
+};
+
+var JETPACK = {
+  lite:       { setup: { id: 'price_1T91jlHVpACKt37p05vTQ3vI', amount: 1500 }, monthly: { id: 'price_1T91jmHVpACKt37pQ36ViL9H', amount: 2000 } },
+  pro:        { setup: { id: 'price_1T91jnHVpACKt37pg3YqJL2M', amount: 3000 }, monthly: { id: 'price_1T91joHVpACKt37pjLGVKh5L', amount: 6000 } },
+  enterprise: { setup: { id: 'price_1T91jqHVpACKt37p7EzCAmrf', amount: 6000 }, monthly: { id: 'price_1T91jqHVpACKt37pQMwvYD8a', amount: 12000 } }
+};
+
+// ── TOGGLE ROW ─────────────────────────────────────────
+function toggleRow(id) {
+  var el = document.getElementById('toggle-' + id);
+  el.checked = !el.checked;
+  document.getElementById('row-' + id).classList.toggle('selected', el.checked);
+  updateTotals();
+}
+
+function setToggle(id, checked) {
+  var el = document.getElementById('toggle-' + id);
+  if (!el) return;
+  el.checked = checked;
+  document.getElementById('row-' + id).classList.toggle('selected', checked);
+}
+
+// ── BUNDLE PRESETS ──────────────────────────────────────
+var BUNDLES = {
+  found:    ['website','hosting','seo'],
+  presence: ['website','setup','hosting','seo','social'],
+  growth:   ['website','setup','hosting','seo','social','google-ads']
+};
+
+function selectBundle(name) {
+  // Clear all toggles first
+  Object.keys(PRICES).forEach(function(k){ setToggle(k, false); });
+  // Set bundle items
+  (BUNDLES[name] || []).forEach(function(k){ setToggle(k, true); });
+  updateTotals();
+  // Smooth scroll to services
+  document.querySelector('.services-block').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── JETPACK SELECTION ───────────────────────────────────
+function selectJetpack(tier) {
+  if (selectedJetpack === tier) {
+    // Deselect
+    selectedJetpack = null;
+    ['lite','pro','enterprise'].forEach(function(t) {
+      document.getElementById('jetpack-' + t).classList.remove('active');
+      document.getElementById('jetpack-' + t + '-btn').textContent = 'Select Plan';
+    });
+  } else {
+    selectedJetpack = tier;
+    ['lite','pro','enterprise'].forEach(function(t) {
+      var isActive = (t === tier);
+      document.getElementById('jetpack-' + t).classList.toggle('active', isActive);
+      document.getElementById('jetpack-' + t + '-btn').textContent = isActive ? 'Selected ✓' : 'Select Plan';
+    });
+  }
+  updateTotals();
+}
+
+// ── UPDATE TOTALS ───────────────────────────────────────
+function updateTotals() {
+  var todayAmt = 0;
+  var monthlyAmt = 0;
+  var hasOnce = false;
+  var hasMonthly = false;
+
+  Object.keys(PRICES).forEach(function(k) {
+    var el = document.getElementById('toggle-' + k);
+    if (el && el.checked) {
+      var p = PRICES[k];
+      if (p.interval === 'once') { todayAmt += p.amount; hasOnce = true; }
+      else { monthlyAmt += p.amount; hasMonthly = true; }
+    }
+  });
+
+  if (selectedJetpack) {
+    var jp = JETPACK[selectedJetpack];
+    todayAmt += jp.setup.amount;
+    monthlyAmt += jp.monthly.amount;
+    hasOnce = true;
+    hasMonthly = true;
+  }
+
+  var isMixed = hasOnce && hasMonthly;
+
+  var todayEl = document.getElementById('totalToday');
+  var monthEl = document.getElementById('totalMonthly');
+  todayEl.textContent = '$' + todayAmt.toLocaleString();
+  monthEl.textContent = '$' + monthlyAmt.toLocaleString() + '/mo';
+  todayEl.className = 'sticky-total-value' + (todayAmt > 0 ? ' has-value' : '');
+  monthEl.className = 'sticky-total-value' + (monthlyAmt > 0 ? ' has-value' : '');
+
+  document.getElementById('mixedNote').style.display = isMixed ? 'block' : 'none';
+}
+
+// ── CHECKOUT ────────────────────────────────────────────
+async function proceedToCheckout() {
+  // Collect one-time price IDs
+  var onceIds = [];
+  var monthIds = [];
+
+  Object.keys(PRICES).forEach(function(k) {
+    var el = document.getElementById('toggle-' + k);
+    if (el && el.checked) {
+      var p = PRICES[k];
+      if (p.interval === 'once') onceIds.push(p.id);
+      else monthIds.push(p.id);
+    }
+  });
+
+  if (selectedJetpack) {
+    var jp = JETPACK[selectedJetpack];
+    onceIds.push(jp.setup.id);
+    monthIds.push(jp.monthly.id);
+  }
+
+  var total = onceIds.length + monthIds.length;
+  if (total === 0) {
+    alert('Please select at least one service.');
+    return;
+  }
+
+  var btn = document.getElementById('checkoutBtn');
+  btn.textContent = 'Creating checkout...';
+  btn.disabled = true;
+
+  try {
+    var isMixed = onceIds.length > 0 && monthIds.length > 0;
+
+    if (!isMixed) {
+      // Single session
+      var priceIds = onceIds.length > 0 ? onceIds : monthIds;
+      var mode = onceIds.length > 0 ? 'payment' : 'subscription';
+      var res = await fetch('https://sunstatedigital.app.n8n.cloud/webhook/stripe-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ priceIds: priceIds, mode: mode })
+      });
+      var data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error('No checkout URL returned');
+      }
+    } else {
+      // Mixed cart — two sessions, redirect to payment first, store subscription URL
+      var [resOnce, resSub] = await Promise.all([
+        fetch('https://sunstatedigital.app.n8n.cloud/webhook/stripe-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ priceIds: onceIds, mode: 'payment' })
+        }),
+        fetch('https://sunstatedigital.app.n8n.cloud/webhook/stripe-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ priceIds: monthIds, mode: 'subscription' })
+        })
+      ]);
+      var dataOnce = await resOnce.json();
+      var dataSub  = await resSub.json();
+      if (dataOnce.url && dataSub.url) {
+        sessionStorage.setItem('ssd_subscription_checkout', dataSub.url);
+        window.location.href = dataOnce.url;
+      } else if (dataOnce.url) {
+        window.location.href = dataOnce.url;
+      } else if (dataSub.url) {
+        window.location.href = dataSub.url;
+      } else {
+        throw new Error('No checkout URLs returned');
+      }
+    }
+  } catch(e) {
+    console.error(e);
+    btn.textContent = 'Proceed to Checkout →';
+    btn.disabled = false;
+    alert('Something went wrong creating your checkout. Please try again or call us.');
+  }
+}
+
+// ── INIT ────────────────────────────────────────────────
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(function(el) { io.observe(el); });
+
+// Initialise totals on load
+updateTotals();
+</script>
+</body>
+</html>
