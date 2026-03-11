@@ -271,7 +271,7 @@ h2{font:900 clamp(28px,3.5vw,54px)/1.05 'Montserrat',sans-serif;letter-spacing:-
       <div class="bundle-card" style="border-color:rgba(255,215,0,0.15);background:linear-gradient(180deg,rgba(255,215,0,0.04) 0%,var(--card) 100%)" onclick="selectBundle('presence')">
         <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--gold-grad);color:#000;font:700 9px/1 'Inter',sans-serif;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:0 0 10px 10px">⭐ Most Popular</div>
         <div class="bundle-name" style="margin-top:16px">🌐 Full Digital Presence</div>
-        <div class="bundle-desc">Website + Setup + Hosting + SEO + Social. Everything to look legit and get found.</div>
+        <div class="bundle-desc">Website + Setup + Hosting + SEO. Everything to look legit and get found.</div>
         <div class="bundle-price">
           <div class="bundle-today">$248 today</div>
           <div class="bundle-monthly">+ $218/month</div>
@@ -280,7 +280,7 @@ h2{font:900 clamp(28px,3.5vw,54px)/1.05 'Montserrat',sans-serif;letter-spacing:-
       </div>
       <div class="bundle-card" onclick="selectBundle('growth')">
         <div class="bundle-name">🚀 Total Growth Engine</div>
-        <div class="bundle-desc">Full presence + Google Ads. Maximum reach, maximum enquiries. Built to scale.</div>
+        <div class="bundle-desc">Website + Setup + Hosting + SEO + Google Ads. Maximum reach, maximum enquiries. Built to scale.</div>
         <div class="bundle-price">
           <div class="bundle-today">$248 today</div>
           <div class="bundle-monthly">+ $617/month</div>
@@ -618,6 +618,7 @@ function toggleRow(id) {
   var el = document.getElementById('toggle-' + id);
   el.checked = !el.checked;
   document.getElementById('row-' + id).classList.toggle('selected', el.checked);
+  syncDependencies();
   updateTotals();
 }
 
@@ -628,11 +629,29 @@ function setToggle(id, checked) {
   document.getElementById('row-' + id).classList.toggle('selected', checked);
 }
 
+function syncDependencies() {
+  var website = document.getElementById('toggle-website');
+  var setup = document.getElementById('toggle-setup');
+  var hosting = document.getElementById('toggle-hosting');
+  if (!website) return;
+
+  if (website.checked) {
+    if (setup) { setup.checked = true; document.getElementById('row-setup').classList.add('selected'); }
+    if (hosting) { hosting.checked = true; document.getElementById('row-hosting').classList.add('selected'); }
+  }
+
+  var rowSetup = document.getElementById('row-setup');
+  if (rowSetup) {
+    rowSetup.style.opacity = website.checked ? '0.65' : '1';
+    rowSetup.style.pointerEvents = website.checked ? 'none' : 'auto';
+  }
+}
+
 // ── BUNDLE PRESETS ──────────────────────────────────────
 var BUNDLES = {
   found:    ['website','hosting','seo'],
-  presence: ['website','setup','hosting','seo','social'],
-  growth:   ['website','setup','hosting','seo','social','google-ads']
+  presence: ['website','setup','hosting','seo'],
+  growth:   ['website','setup','hosting','seo','google-ads']
 };
 
 function selectBundle(name) {
@@ -700,6 +719,40 @@ function updateTotals() {
 
   document.getElementById('mixedNote').style.display = isMixed ? 'block' : 'none';
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  var wrap = document.querySelector('.sec .wrap');
+  var jet = document.getElementById('jetpack-section');
+  var firstServices = document.querySelector('.services-block');
+  if (wrap && jet && firstServices) wrap.insertBefore(jet, firstServices);
+
+  var social = document.getElementById('row-social');
+  if (social) social.style.display = 'none';
+
+  var monthly = document.querySelectorAll('.services-block')[1];
+  if (monthly) {
+    ['row-crm','row-google-ads','row-meta-ads','row-seo','row-email','row-hosting','row-domain','row-care'].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) monthly.appendChild(el);
+    });
+  }
+
+  var setupName = document.querySelector('#row-setup .toggle-name');
+  var setupDesc = document.querySelector('#row-setup .toggle-desc');
+  if (setupName) setupName.textContent = 'Website Setup Fee (auto-added with websites)';
+  if (setupDesc) setupDesc.textContent = 'Automatically included when a website is selected.';
+
+  var hostingDesc = document.querySelector('#row-hosting .toggle-desc');
+  if (hostingDesc) hostingDesc.textContent = 'Managed hosting is automatically included with website subscriptions.';
+
+  var domainName = document.querySelector('#row-domain .toggle-name');
+  var domainDesc = document.querySelector('#row-domain .toggle-desc');
+  if (domainName) domainName.textContent = 'Need a domain name?';
+  if (domainDesc) domainDesc.textContent = 'If you already have a domain, leave this off. If not, we can source one for you.';
+
+  syncDependencies();
+  updateTotals();
+});
 
 // ── CHECKOUT ────────────────────────────────────────────
 async function proceedToCheckout() {
