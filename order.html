@@ -756,22 +756,53 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ── CHECKOUT ────────────────────────────────────────────
-function proceedToCheckout() {
-  var total = 0;
+async function proceedToCheckout() {
+  var priceIds = [];
+  var hasRecurring = false;
 
   Object.keys(PRICES).forEach(function(k) {
     var el = document.getElementById('toggle-' + k);
-    if (el && el.checked) total++;
+    if (el && el.checked) {
+      var p = PRICES[k];
+      priceIds.push(p.id);
+      if (p.interval === 'month') hasRecurring = true;
+    }
   });
 
-  if (selectedJetpack) total++;
+  if (selectedJetpack) {
+    var jp = JETPACK[selectedJetpack];
+    priceIds.push(jp.setup.id);
+    priceIds.push(jp.monthly.id);
+    hasRecurring = true;
+  }
 
-  if (total === 0) {
+  if (priceIds.length === 0) {
     alert('Please select at least one service.');
     return;
   }
 
-  window.location.href = 'https://buy.stripe.com/aFaeVd8pT5OKfh9cs69ws0e';
+  var btn = document.getElementById('checkoutBtn');
+  btn.textContent = 'Opening checkout...';
+  btn.disabled = true;
+
+  try {
+    var res = await fetch('https://sunstatedigital.app.n8n.cloud/webhook/mason-send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ priceIds: priceIds, mode: hasRecurring ? 'subscription' : 'payment' })
+    });
+    var data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+      return;
+    }
+    throw new Error('No checkout URL returned');
+  } catch (e) {
+    console.error(e);
+    btn.textContent = 'Get Started →';
+    btn.disabled = false;
+    alert('Checkout did not open properly. Please try again.');
+  }
 }
 
 // ── INIT ────────────────────────────────────────────────
