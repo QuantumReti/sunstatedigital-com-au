@@ -327,8 +327,9 @@ a{text-decoration:none;color:inherit}
 @media(max-width:960px){
   .ssd-sec,.ssd-sec-s{padding:80px 5%}
   .ssd-grid-2,.ssd-grid-3{grid-template-columns:1fr!important}
-  .ssd-bento{grid-template-columns:1fr!important}
-  .ssd-bento > *{grid-column:auto !important;grid-row:auto !important;min-height:auto !important}
+  .ssd-bento{display:flex!important;flex-direction:column!important;gap:16px!important}
+  .ssd-bento > *{grid-column:auto !important;grid-row:auto !important;min-height:auto !important;width:100% !important}
+  .ssd-bento .ssd-card,.ssd-bento .ssd-tilt{padding:28px !important}
   .ssd-marquee-row{flex-wrap:wrap!important;gap:16px!important}
   .ssd-h1{font-size:clamp(38px,8vw,60px)!important}
   .ssd-h2{font-size:clamp(30px,7vw,48px)!important}
