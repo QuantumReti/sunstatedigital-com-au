@@ -996,7 +996,7 @@ a{text-decoration:none;color:inherit}
 
     <div class="fade-up d3" style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:44px;">
       <a href="/get-started" class="ssd-btn ssd-btn-gold ssd-btn-pulse" style="font-size:14px;padding:22px 56px;">Start Your Project →</a>
-      <a href="https://api.leadconnectorhq.com/widget/bookings/joshua-reti-personal-calendar-k667zcdiw" target="_blank" class="ssd-btn ssd-btn-ghost">Book a Free Call</a>
+      <a href="/order.html" target="_blank" class="ssd-btn ssd-btn-ghost">Get Started</a>
     </div>
 
     <div class="fade-up d4" style="display:flex;justify-content:center;gap:36px;flex-wrap:wrap;">
@@ -1100,7 +1100,7 @@ a{text-decoration:none;color:inherit}
         <div class="footer-col-title">Brisbane HQ</div>
         <p style="color:rgba(255,255,255,0.45);font-size:14px;line-height:1.8;">Proudly based in<br>Brisbane, Queensland<br>Australia</p>
         <a href="mailto:info@sunstatedigital.com.au" style="color:#FFD700;font-size:14px;margin-top:12px;display:block;">info@sunstatedigital.com.au</a>
-        <a href="/get-started.html" style="display:inline-flex;margin-top:20px;background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:12px 24px;border-radius:100px;text-decoration:none;">Book Free Call →</a>
+        <a href="/get-started.html" style="display:inline-flex;margin-top:20px;background:linear-gradient(135deg,#FFD700,#C8920A);color:#000;font:700 11px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:12px 24px;border-radius:100px;text-decoration:none;">Get Started →</a>
       </div>
     </div>
   </div>
@@ -1279,7 +1279,7 @@ if(msnStep===0){msnStep=1;msnDelay(function(){addMMsg("Love it! 😊 What's your
 else if(msnStep===1){msnName=t.split(' ')[0];msnStep=2;msnDelay(function(){addMMsg('Nice to meet you, '+msnName+'! 🤜');msnDelay(function(){addMMsg("So what's going on with your business right now? Are you looking to get more customers online?");},600);},400);}
 else if(msnStep===2){msnStep=3;var r=msnCtx(t);msnDelay(function(){addMMsg(r)},500);}
 else if(msnStep===3){msnStep=4;var h=msnHook(t);msnDelay(function(){addMMsg(h);msnDelay(function(){addMMsg("Here’s what I’d suggest — a quick 15-min call with Josh. He’ll look at your situation, tell you exactly what to do, zero pressure. Want me to sort that? 📅");},1200);},600);}
-else{var lc=t.toLowerCase();if(/yes|yeah|sure|ok|book|call|love|great|sounds/.test(lc)){msnDelay(function(){addMMsg('Perfect! 🙌 Jumping to WhatsApp to send the booking link — easier over there. See you in a sec!');setTimeout(function(){window.open('https://wa.me/61404755888?text='+encodeURIComponent('Hi Mason! I just chatted on the Sun State Digital website. My name is '+msnName+'.'),'_blank');},1000);},500);}else{msnDelay(function(){addMMsg("Of course! What else do you want to know? I'm not going anywhere 😊")},400);}}}
+else{var lc=t.toLowerCase();if(/yes|yeah|sure|ok|book|call|love|great|sounds/.test(lc)){msnDelay(function(){addMMsg('Perfect - sending you straight to checkout so you can get started now.');setTimeout(function(){window.open('/order.html','_blank');},1000);},500);}else{msnDelay(function(){addMMsg("Of course! What else do you want to know? I'm not going anywhere 😊")},400);}}}
 function msnDelay(fn,ms){setTimeout(fn,ms||500)}
 function msnCtx(t){t=t.toLowerCase();if(/website|site\b|web/.test(t))return'Got it \u2014 do you have a site already, or starting from scratch?';if(/seo|google|rank|found|search/.test(t))return'Ahh, the Google problem \ud83d\ude05 Are people finding you online right now, or basically invisible?';if(/ads|facebook|instagram|social/.test(t))return'Nice \u2014 running ads already, or just exploring the idea?';if(/leads|customers|jobs|clients|enquir/.test(t))return'Love it \u2014 where are most of your leads coming from right now?';if(/price|cost|how much|afford/.test(t))return'Honestly our stuff is way more affordable than most expect. What service were you thinking about?';if(/help|not sure|lost|unsure/.test(t))return"No worries \u2014 that\u2019s what I\u2019m here for. What do you do for work?";return'Interesting \u2014 what does your online presence look like right now?'}
 function msnHook(t){t=t.toLowerCase();if(/no site|no website|nothing|invisible|not found/.test(t))return"If you\u2019re not on Google, your competitors are taking those jobs right now. Most businesses lose 5-10 enquiries a week without knowing it.";if(/old|bad site|not working|outdated|slow/.test(t))return"A site that doesn\u2019t convert is worse than none \u2014 it kills trust before you even speak to them. Good news: we fix that fast.";if(/referral|word of mouth|mates|friends/.test(t))return"Referrals are gold \u2014 but what happens when they Google you and the site doesn\u2019t back it up?";return"You\u2019re ahead of most owners just by looking into this. The ones who wait end up scrambling."}
