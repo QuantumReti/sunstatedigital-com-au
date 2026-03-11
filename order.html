@@ -756,87 +756,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ── CHECKOUT ────────────────────────────────────────────
-async function proceedToCheckout() {
-  // Collect one-time price IDs
-  var onceIds = [];
-  var monthIds = [];
+function proceedToCheckout() {
+  var total = 0;
 
   Object.keys(PRICES).forEach(function(k) {
     var el = document.getElementById('toggle-' + k);
-    if (el && el.checked) {
-      var p = PRICES[k];
-      if (p.interval === 'once') onceIds.push(p.id);
-      else monthIds.push(p.id);
-    }
+    if (el && el.checked) total++;
   });
 
-  if (selectedJetpack) {
-    var jp = JETPACK[selectedJetpack];
-    onceIds.push(jp.setup.id);
-    monthIds.push(jp.monthly.id);
-  }
+  if (selectedJetpack) total++;
 
-  var total = onceIds.length + monthIds.length;
   if (total === 0) {
     alert('Please select at least one service.');
     return;
   }
 
-  var btn = document.getElementById('checkoutBtn');
-  btn.textContent = 'Creating checkout...';
-  btn.disabled = true;
-
-  try {
-    var isMixed = onceIds.length > 0 && monthIds.length > 0;
-
-    if (!isMixed) {
-      // Single session
-      var priceIds = onceIds.length > 0 ? onceIds : monthIds;
-      var mode = onceIds.length > 0 ? 'payment' : 'subscription';
-      var res = await fetch('https://sunstatedigital.app.n8n.cloud/webhook/stripe-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceIds: priceIds, mode: mode })
-      });
-      var data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error('No checkout URL returned');
-      }
-    } else {
-      // Mixed cart — two sessions, redirect to payment first, store subscription URL
-      var [resOnce, resSub] = await Promise.all([
-        fetch('https://sunstatedigital.app.n8n.cloud/webhook/stripe-checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ priceIds: onceIds, mode: 'payment' })
-        }),
-        fetch('https://sunstatedigital.app.n8n.cloud/webhook/stripe-checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ priceIds: monthIds, mode: 'subscription' })
-        })
-      ]);
-      var dataOnce = await resOnce.json();
-      var dataSub  = await resSub.json();
-      if (dataOnce.url && dataSub.url) {
-        sessionStorage.setItem('ssd_subscription_checkout', dataSub.url);
-        window.location.href = dataOnce.url;
-      } else if (dataOnce.url) {
-        window.location.href = dataOnce.url;
-      } else if (dataSub.url) {
-        window.location.href = dataSub.url;
-      } else {
-        throw new Error('No checkout URLs returned');
-      }
-    }
-  } catch(e) {
-    console.error(e);
-    btn.textContent = 'Proceed to Checkout →';
-    btn.disabled = false;
-    alert('Something went wrong creating your checkout. Please try again or call us.');
-  }
+  window.location.href = 'https://buy.stripe.com/aFaeVd8pT5OKfh9cs69ws0e';
 }
 
 // ── INIT ────────────────────────────────────────────────
