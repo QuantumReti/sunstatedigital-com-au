@@ -605,15 +605,23 @@ h2{font:900 clamp(28px,3.5vw,54px)/1.05 'Montserrat',sans-serif;letter-spacing:-
 <script>
 // ── STATE ─────────────────────────────────────────────
 var selectedJetpack = null; // 'lite' | 'pro' | 'enterprise' | null
+var selectedWebsiteTier = 'growth';
 var stripe = Stripe('pk_live_51PVnZ4HVpACKt37pickHDzrt3NKFXiaj4zy9ltFWMhWE5JMhPO2bYJURjXdNb5efSjDbko5PCjbNyaprhF69Nnxl00LQlhvXfh');
 var embeddedCheckoutInstance = null;
+
+var WEBSITE_TIERS = {
+  basic:     { label: 'Basic - 5 pages', amount: 199, id: 'price_1T9uynHVpACKt37pMqSpsI9C' },
+  starter:   { label: 'Starter - 10 pages', amount: 249, id: 'price_1T9uyoHVpACKt37pXxuKc9HH' },
+  growth:    { label: 'Growth - 15 pages', amount: 299, id: 'price_1T9uyoHVpACKt37p2URAxfGa' },
+  pro:       { label: 'Pro - 20 pages', amount: 329, id: 'price_1T9uyoHVpACKt37pkFu9PYwv' },
+  scale:     { label: 'Scale - 25 pages', amount: 399, id: 'price_1T9uypHVpACKt37pI60TWwrY' },
+  authority: { label: 'Authority - 30 pages', amount: 429, id: 'price_1T9uypHVpACKt37pXXjcuUcX' }
+};
 
 // Stripe price metadata (used for cart logic)
 var PRICES = {
   'website':      { id: 'price_1T8WDrHVpACKt37psbpjdPad',  amount: 199,   interval: 'once' },
-  'setup':        { id: 'price_1T8WENHVpACKt37pjAbiWWW3',  amount: 49,    interval: 'once' },
   'crm-onboard':  { id: 'price_1T8WVkHVpACKt37pHJW5n3DI',  amount: 99,    interval: 'once' },
-  'hosting':      { id: 'price_1T8WEtHVpACKt37pES82sfmu',  amount: 20,    interval: 'month' },
   'domain':       { id: 'price_1T8WFNHVpACKt37peX0A2Tlq',  amount: 10,    interval: 'month' },
   'care':         { id: 'price_1T8WWDHVpACKt37p5KYwmqlJ',  amount: 49,    interval: 'month' },
   'seo':          { id: 'price_1T8WWnHVpACKt37pW0z279Tt',  amount: 99,    interval: 'month' },
@@ -646,29 +654,24 @@ function setToggle(id, checked) {
   document.getElementById('row-' + id).classList.toggle('selected', checked);
 }
 
+function setWebsiteTier(value) {
+  selectedWebsiteTier = value;
+  updateTotals();
+}
+
 function syncDependencies() {
   var website = document.getElementById('toggle-website');
-  var setup = document.getElementById('toggle-setup');
-  var hosting = document.getElementById('toggle-hosting');
   if (!website) return;
 
-  if (website.checked) {
-    if (setup) { setup.checked = true; document.getElementById('row-setup').classList.add('selected'); }
-    if (hosting) { hosting.checked = true; document.getElementById('row-hosting').classList.add('selected'); }
-  }
-
-  var rowSetup = document.getElementById('row-setup');
-  if (rowSetup) {
-    rowSetup.style.opacity = website.checked ? '0.65' : '1';
-    rowSetup.style.pointerEvents = website.checked ? 'none' : 'auto';
-  }
+  var tierWrap = document.getElementById('websiteTierWrap');
+  if (tierWrap) tierWrap.style.display = website.checked ? 'block' : 'none';
 }
 
 // ── BUNDLE PRESETS ──────────────────────────────────────
 var BUNDLES = {
-  found:    ['website','hosting','seo'],
-  presence: ['website','setup','hosting','seo'],
-  growth:   ['website','setup','hosting','seo','google-ads']
+  found:    ['website','seo'],
+  presence: ['website','seo'],
+  growth:   ['website','seo','google-ads']
 };
 
 function selectBundle(name) {
@@ -717,6 +720,11 @@ function updateTotals() {
     }
   });
 
+  if (document.getElementById('toggle-website') && document.getElementById('toggle-website').checked) {
+    monthlyAmt += WEBSITE_TIERS[selectedWebsiteTier].amount;
+    hasMonthly = true;
+  }
+
   if (selectedJetpack) {
     var jp = JETPACK[selectedJetpack];
     todayAmt += jp.setup.amount;
@@ -754,13 +762,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  var setupName = document.querySelector('#row-setup .toggle-name');
-  var setupDesc = document.querySelector('#row-setup .toggle-desc');
-  if (setupName) setupName.textContent = 'Website Setup Fee (auto-added with websites)';
-  if (setupDesc) setupDesc.textContent = 'Automatically included when a website is selected.';
+  var websiteName = document.querySelector('#row-website .toggle-name');
+  var websiteDesc = document.querySelector('#row-website .toggle-desc');
+  if (websiteName) websiteName.textContent = 'Website Build';
+  if (websiteDesc) websiteDesc.textContent = 'One-off setup is always $199. Choose your website tier below for the monthly subscription.';
 
-  var hostingDesc = document.querySelector('#row-hosting .toggle-desc');
-  if (hostingDesc) hostingDesc.textContent = 'Managed hosting is automatically included with website subscriptions.';
+  var websiteRow = document.getElementById('row-website');
+  if (websiteRow && !document.getElementById('websiteTierWrap')) {
+    websiteRow.insertAdjacentHTML('afterend', '<div id="websiteTierWrap" style="display:none;padding:18px 24px 24px;border:1px solid var(--border);border-top:none;border-radius:0 0 20px 20px;background:rgba(255,255,255,0.02);margin-top:-18px;margin-bottom:18px"><div style="font:700 12px/1 Inter,sans-serif;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Website tier</div><select id="websiteTierSelect" onchange="setWebsiteTier(this.value)" style="width:100%;background:#0d0d0d;color:#fff;border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:14px 16px;font:600 15px/1.2 Inter,sans-serif"><option value="basic">Basic - 5 pages - $199/mo</option><option value="starter">Starter - 10 pages - $249/mo</option><option value="growth" selected>Growth - 15 pages - $299/mo</option><option value="pro">Pro - 20 pages - $329/mo</option><option value="scale">Scale - 25 pages - $399/mo</option><option value="authority">Authority - 30 pages - $429/mo</option></select><div style="color:var(--muted);font-size:13px;line-height:1.6;margin-top:12px">Website setup is always a one-off $199. Your selected tier sets the monthly website subscription.</div></div>');
+  }
+
+  var rowSetup = document.getElementById('row-setup');
+  if (rowSetup) rowSetup.style.display = 'none';
+  var rowHosting = document.getElementById('row-hosting');
+  if (rowHosting) rowHosting.style.display = 'none';
 
   var domainName = document.querySelector('#row-domain .toggle-name');
   var domainDesc = document.querySelector('#row-domain .toggle-desc');
@@ -784,6 +799,11 @@ async function proceedToCheckout() {
       if (p.interval === 'month') hasRecurring = true;
     }
   });
+
+  if (document.getElementById('toggle-website') && document.getElementById('toggle-website').checked) {
+    priceIds.push(WEBSITE_TIERS[selectedWebsiteTier].id);
+    hasRecurring = true;
+  }
 
   if (selectedJetpack) {
     var jp = JETPACK[selectedJetpack];
