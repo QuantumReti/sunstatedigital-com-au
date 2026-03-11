@@ -100,7 +100,7 @@ h2{font:900 clamp(28px,3.5vw,54px)/1.05 'Montserrat',sans-serif;letter-spacing:-
 .jetpack-card.active .jetpack-select-btn:hover{background:var(--gold-grad);opacity:0.9}
 .jetpack-note{background:rgba(255,215,0,0.04);border:1px solid rgba(255,215,0,0.1);border-top:none;border-radius:0 0 var(--r-lg) var(--r-lg);padding:20px 32px;font:400 13px/1.6 'Inter',sans-serif;color:var(--muted)}
 /* STICKY TOTAL BAR */
-.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,215,0,0.15);padding:16px 6%;box-shadow:0 -8px 40px rgba(0,0,0,0.6)}
+.sticky-bar{position:fixed;bottom:112px;left:0;right:0;z-index:150;background:rgba(10,10,10,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid rgba(255,215,0,0.15);padding:16px 6%;box-shadow:0 -8px 40px rgba(0,0,0,0.6)}
 .sticky-bar-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .sticky-totals{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
 .sticky-total-item{display:flex;flex-direction:column;gap:2px}
@@ -112,6 +112,11 @@ h2{font:900 clamp(28px,3.5vw,54px)/1.05 'Montserrat',sans-serif;letter-spacing:-
 .checkout-btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold-grad);color:#000;font:800 13px/1 'Inter',sans-serif;letter-spacing:1.5px;text-transform:uppercase;padding:18px 40px;border-radius:100px;border:none;cursor:pointer;transition:all 0.3s var(--ease);white-space:nowrap;flex-shrink:0}
 .checkout-btn:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(255,215,0,0.3)}
 .checkout-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+#embeddedCheckoutWrap{display:none;max-width:1120px;margin:32px auto 0;padding:0 6% 40px}
+#embeddedCheckoutCard{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:28px;padding:24px;box-shadow:0 20px 80px rgba(0,0,0,0.3)}
+#embeddedCheckoutTitle{font:800 28px/1.1 'Montserrat',sans-serif;color:#fff;margin:0 0 10px}
+#embeddedCheckoutText{color:rgba(255,255,255,0.65);margin:0 0 20px;font-size:15px}
+#embeddedCheckout{min-height:680px}
 /* FOOTER */
 .footer{background:#040404;border-top:1px solid var(--border)}
 .footer-top{padding:80px 6%}
@@ -537,6 +542,14 @@ h2{font:900 clamp(28px,3.5vw,54px)/1.05 'Montserrat',sans-serif;letter-spacing:-
   </div>
 </div>
 
+<section id="embeddedCheckoutWrap">
+  <div id="embeddedCheckoutCard">
+    <h2 id="embeddedCheckoutTitle">Complete your payment</h2>
+    <p id="embeddedCheckoutText">Your selected services are locked in below. Enter your details and card information to finish checkout.</p>
+    <div id="embeddedCheckout"></div>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-top">
@@ -588,9 +601,12 @@ h2{font:900 clamp(28px,3.5vw,54px)/1.05 'Montserrat',sans-serif;letter-spacing:-
 </footer>
 <div style="height:220px"></div>
 
+<script src="https://js.stripe.com/v3/"></script>
 <script>
 // ── STATE ─────────────────────────────────────────────
 var selectedJetpack = null; // 'lite' | 'pro' | 'enterprise' | null
+var stripe = Stripe('pk_live_51PVnZ4HVpACKt37pickHDzrt3NKFXiaj4zy9ltFWMhWE5JMhPO2bYJURjXdNb5efSjDbko5PCjbNyaprhF69Nnxl00LQlhvXfh');
+var embeddedCheckoutInstance = null;
 
 // Stripe price metadata (used for cart logic)
 var PRICES = {
@@ -782,7 +798,7 @@ async function proceedToCheckout() {
   }
 
   var btn = document.getElementById('checkoutBtn');
-  btn.textContent = 'Opening checkout...';
+  btn.textContent = 'Loading payment...';
   btn.disabled = true;
 
   try {
@@ -792,11 +808,24 @@ async function proceedToCheckout() {
       body: JSON.stringify({ priceIds: priceIds, mode: hasRecurring ? 'subscription' : 'payment' })
     });
     var data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-      return;
+    if (!data.clientSecret) throw new Error('No client secret returned');
+
+    var wrap = document.getElementById('embeddedCheckoutWrap');
+    var mount = document.getElementById('embeddedCheckout');
+    wrap.style.display = 'block';
+    mount.innerHTML = '';
+
+    if (embeddedCheckoutInstance && embeddedCheckoutInstance.destroy) {
+      try { embeddedCheckoutInstance.destroy(); } catch (e) {}
     }
-    throw new Error('No checkout URL returned');
+
+    embeddedCheckoutInstance = await stripe.initEmbeddedCheckout({
+      fetchClientSecret: async function() { return data.clientSecret; }
+    });
+    embeddedCheckoutInstance.mount('#embeddedCheckout');
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    btn.textContent = 'Payment loaded';
+    btn.disabled = false;
   } catch (e) {
     console.error(e);
     btn.textContent = 'Get Started →';
