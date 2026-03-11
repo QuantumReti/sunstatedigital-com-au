@@ -1217,6 +1217,23 @@ const track1 = document.getElementById('track1');
 const track2 = document.getElementById('track2');
 if (track1) { const html = t1.map(buildTestimonialCard).join(''); track1.innerHTML = html + html; }
 if (track2) { const html = t2.map(buildTestimonialCard).join(''); track2.innerHTML = html + html; }
+
+(function(){
+  if (window.innerWidth <= 960) {
+    var bento = document.querySelector('.ssd-bento');
+    if (bento) {
+      bento.style.display = 'flex';
+      bento.style.flexDirection = 'column';
+      bento.style.gap = '16px';
+      Array.from(bento.children).forEach(function(card){
+        card.style.width = '100%';
+        card.style.minHeight = 'auto';
+        card.style.gridRow = 'auto';
+        card.style.gridColumn = 'auto';
+      });
+    }
+  }
+})();
 </script>
 
 
